@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 2026/05/27-19:55:42.056 1659c Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Site Characteristics Database/MANIFEST-000001
 2026/05/27-19:55:42.056 1659c Recovering log #3
 2026/05/27-19:55:42.056 1659c Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Site Characteristics Database/000003.log 
@@ -7,3 +8,8 @@
 2026/05/28-17:34:17.423 693c Recovering log #6
 2026/05/28-17:34:17.423 693c Reusing old log C:\SOURCE\FinalProject\Saved\webcache_6613\Default\Site Characteristics Database/000006.log 
 >>>>>>> Development
+=======
+2026/05/28-07:33:24.017 3b18 Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Site Characteristics Database/MANIFEST-000001
+2026/05/28-07:33:24.021 3b18 Recovering log #3
+2026/05/28-07:33:24.021 3b18 Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Site Characteristics Database/000003.log 
+>>>>>>> 6c13436ca0f98ce270209e90b7289177881b4bdc

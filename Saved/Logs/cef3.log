@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 [67364:57732:0527/195800.268:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
 [67364:57732:0527/195800.327:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
 [87636:67540:0527/195803.395:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-C8BC6160552DA45CE82996DF1545C125 will be ignored
@@ -79,3 +80,9 @@ C:\fakepath(382,11-39): warning X4008: floating point division by zero
 [42424:19052:0528/174341.063:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -107
 [25948:18828:0528/175041.604:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
 >>>>>>> Development
+=======
+[37644:14800:0528/112608.007:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
+[37644:14800:0528/112608.247:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[36784:37212:0528/112614.551:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-F38B0D719E392177BDC273772B0D5D42 will be ignored
+[37644:14800:0528/133151.314:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+>>>>>>> 6c13436ca0f98ce270209e90b7289177881b4bdc

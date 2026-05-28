@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 2026/05/27-19:58:03.071 a8b4 Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Session Storage/MANIFEST-000001
 2026/05/27-19:58:03.072 a8b4 Recovering log #3
 2026/05/27-19:58:03.073 a8b4 Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Session Storage/000003.log 
@@ -7,3 +8,8 @@
 2026/05/28-17:43:20.085 c90c Recovering log #3
 2026/05/28-17:43:20.086 c90c Reusing old log C:\SOURCE\FinalProject\Saved\webcache_6613\Default\Session Storage/000003.log 
 >>>>>>> Development
+=======
+2026/05/28-11:26:14.232 6598 Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Session Storage/MANIFEST-000001
+2026/05/28-11:26:14.237 6598 Recovering log #3
+2026/05/28-11:26:14.238 6598 Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Session Storage/000003.log 
+>>>>>>> 6c13436ca0f98ce270209e90b7289177881b4bdc
