@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [67364:57732:0527/195800.268:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
 [67364:57732:0527/195800.327:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
 [87636:67540:0527/195803.395:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-C8BC6160552DA45CE82996DF1545C125 will be ignored
@@ -57,3 +58,24 @@ C:\fakepath(382,11-39): warning X4008: floating point division by zero
 [67364:57732:0528/071359.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
 [67364:57732:0528/071359.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
 [67364:57732:0528/071359.747:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+=======
+[25948:18828:0528/174315.389:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
+[25948:46848:0528/174315.433:ERROR:google_update_settings.cc(265)] Failed opening key Software\Chromium to set usagestats; result: 5
+[25948:18828:0528/174315.439:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[25948:14484:0528/174317.229:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[25948:14484:0528/174317.232:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[25948:14484:0528/174317.233:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[25948:14484:0528/174317.235:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[25948:21032:0528/174318.934:WARNING:value_store_frontend.cc(47)] Reading ahfgeienlihckogmohjhadlkjgocpleb.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[25948:21032:0528/174318.936:WARNING:value_store_frontend.cc(47)] Reading mhjfbmdgcfjbbpaeojofohoefgiehjai.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[43840:15740:0528/174320.095:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-3E7C3B1344F0771F76D8C7685219AC0B will be ignored
+[42424:19052:0528/174322.548:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -100
+[42424:19052:0528/174322.677:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -100
+[25948:56860:0528/174326.199:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[25948:56860:0528/174326.201:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[25948:56860:0528/174326.266:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[25948:56860:0528/174326.381:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[42424:19052:0528/174332.240:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -107
+[42424:19052:0528/174341.063:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -107
+[25948:18828:0528/175041.604:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+>>>>>>> Development

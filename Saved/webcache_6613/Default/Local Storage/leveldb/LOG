@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2026/05/27-19:58:00.358 a8b4 Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
 2026/05/27-19:58:00.362 a8b4 Recovering log #8
 2026/05/27-19:58:00.363 a8b4 Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/000008.log 
@@ -67,3 +68,8 @@
 2026/05/27-20:58:56.576 161f4 Level-0 table #39: started
 2026/05/27-20:58:56.581 161f4 Level-0 table #39: 79058 bytes OK
 2026/05/27-20:58:56.584 161f4 Delete type=0 #36
+=======
+2026/05/28-17:43:15.485 c90c Reusing MANIFEST C:\SOURCE\FinalProject\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
+2026/05/28-17:43:15.489 c90c Recovering log #3
+2026/05/28-17:43:15.492 c90c Reusing old log C:\SOURCE\FinalProject\Saved\webcache_6613\Default\Local Storage\leveldb/000003.log 
+>>>>>>> Development
