@@ -1,12 +1,69 @@
-2026/05/27-16:21:29.090 10b5c Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
-2026/05/27-16:21:29.100 10b5c Recovering log #3
-2026/05/27-16:21:29.101 10b5c Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/000003.log 
-2026/05/27-17:03:52.762 14ea4 Level-0 table #5: started
-2026/05/27-17:03:52.767 14ea4 Level-0 table #5: 64719 bytes OK
-2026/05/27-17:03:52.770 14ea4 Delete type=0 #3
-2026/05/27-17:08:17.092 14ea4 Level-0 table #7: started
-2026/05/27-17:08:17.095 14ea4 Level-0 table #7: 65748 bytes OK
-2026/05/27-17:08:17.098 14ea4 Delete type=0 #4
-2026/05/27-17:47:06.303 14ea4 Level-0 table #9: started
-2026/05/27-17:47:06.308 14ea4 Level-0 table #9: 70125 bytes OK
-2026/05/27-17:47:06.310 14ea4 Delete type=0 #6
+2026/05/27-19:58:00.358 a8b4 Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
+2026/05/27-19:58:00.362 a8b4 Recovering log #8
+2026/05/27-19:58:00.363 a8b4 Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/000008.log 
+2026/05/27-20:03:15.612 161f4 Level-0 table #12: started
+2026/05/27-20:03:15.615 161f4 Level-0 table #12: 64238 bytes OK
+2026/05/27-20:03:15.618 161f4 Delete type=0 #8
+2026/05/27-20:25:59.059 161f4 Level-0 table #14: started
+2026/05/27-20:25:59.064 161f4 Level-0 table #14: 69590 bytes OK
+2026/05/27-20:25:59.067 161f4 Delete type=0 #11
+2026/05/27-20:26:31.845 161f4 Level-0 table #16: started
+2026/05/27-20:26:31.849 161f4 Level-0 table #16: 76669 bytes OK
+2026/05/27-20:26:31.853 161f4 Delete type=0 #13
+2026/05/27-20:26:31.853 161f4 Compacting 4@0 + 1@1 files
+2026/05/27-20:26:31.857 161f4 Generated table #17@0: 9 keys, 21158 bytes
+2026/05/27-20:26:31.857 161f4 Compacted 4@0 + 1@1 files => 21158 bytes
+2026/05/27-20:26:31.858 161f4 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/05/27-20:26:31.858 161f4 Delete type=2 #7
+2026/05/27-20:26:31.859 161f4 Delete type=2 #9
+2026/05/27-20:26:31.859 161f4 Delete type=2 #12
+2026/05/27-20:26:31.859 161f4 Delete type=2 #14
+2026/05/27-20:26:31.859 161f4 Delete type=2 #16
+2026/05/27-20:54:03.466 161f4 Level-0 table #19: started
+2026/05/27-20:54:03.469 161f4 Level-0 table #19: 81348 bytes OK
+2026/05/27-20:54:03.471 161f4 Delete type=0 #15
+2026/05/27-20:54:54.074 161f4 Level-0 table #21: started
+2026/05/27-20:54:54.078 161f4 Level-0 table #21: 64310 bytes OK
+2026/05/27-20:54:54.079 161f4 Delete type=0 #18
+2026/05/27-20:55:49.251 161f4 Level-0 table #23: started
+2026/05/27-20:55:49.254 161f4 Level-0 table #23: 65242 bytes OK
+2026/05/27-20:55:49.256 161f4 Delete type=0 #20
+2026/05/27-20:56:04.605 161f4 Level-0 table #25: started
+2026/05/27-20:56:04.609 161f4 Level-0 table #25: 80094 bytes OK
+2026/05/27-20:56:04.611 161f4 Delete type=0 #22
+2026/05/27-20:56:04.611 161f4 Compacting 4@0 + 1@1 files
+2026/05/27-20:56:04.614 161f4 Generated table #26@0: 9 keys, 30426 bytes
+2026/05/27-20:56:04.614 161f4 Compacted 4@0 + 1@1 files => 30426 bytes
+2026/05/27-20:56:04.616 161f4 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/05/27-20:56:04.617 161f4 Delete type=2 #17
+2026/05/27-20:56:04.617 161f4 Delete type=2 #19
+2026/05/27-20:56:04.617 161f4 Delete type=2 #21
+2026/05/27-20:56:04.617 161f4 Delete type=2 #23
+2026/05/27-20:56:04.617 161f4 Delete type=2 #25
+2026/05/27-20:56:20.283 161f4 Level-0 table #28: started
+2026/05/27-20:56:20.286 161f4 Level-0 table #28: 82658 bytes OK
+2026/05/27-20:56:20.287 161f4 Delete type=0 #24
+2026/05/27-20:56:54.170 161f4 Level-0 table #30: started
+2026/05/27-20:56:54.173 161f4 Level-0 table #30: 76874 bytes OK
+2026/05/27-20:56:54.175 161f4 Delete type=0 #27
+2026/05/27-20:57:30.061 161f4 Level-0 table #32: started
+2026/05/27-20:57:30.066 161f4 Level-0 table #32: 77610 bytes OK
+2026/05/27-20:57:30.069 161f4 Delete type=0 #29
+2026/05/27-20:58:04.568 161f4 Level-0 table #34: started
+2026/05/27-20:58:04.572 161f4 Level-0 table #34: 78794 bytes OK
+2026/05/27-20:58:04.575 161f4 Delete type=0 #31
+2026/05/27-20:58:04.575 161f4 Compacting 4@0 + 1@1 files
+2026/05/27-20:58:04.580 161f4 Generated table #35@0: 9 keys, 27678 bytes
+2026/05/27-20:58:04.580 161f4 Compacted 4@0 + 1@1 files => 27678 bytes
+2026/05/27-20:58:04.583 161f4 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/05/27-20:58:04.584 161f4 Delete type=2 #26
+2026/05/27-20:58:04.584 161f4 Delete type=2 #28
+2026/05/27-20:58:04.584 161f4 Delete type=2 #30
+2026/05/27-20:58:04.584 161f4 Delete type=2 #32
+2026/05/27-20:58:04.584 161f4 Delete type=2 #34
+2026/05/27-20:58:30.271 161f4 Level-0 table #37: started
+2026/05/27-20:58:30.275 161f4 Level-0 table #37: 79182 bytes OK
+2026/05/27-20:58:30.278 161f4 Delete type=0 #33
+2026/05/27-20:58:56.576 161f4 Level-0 table #39: started
+2026/05/27-20:58:56.581 161f4 Level-0 table #39: 79058 bytes OK
+2026/05/27-20:58:56.584 161f4 Delete type=0 #36

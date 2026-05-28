@@ -1,9 +1,59 @@
-[84956:84960:0527/162128.813:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
-[84956:84960:0527/162129.055:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
-[85652:85584:0527/162133.672:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-4E794CA1BB63743D55292EE25EC97B9B will be ignored
-[83596:85904:0527/162647.273:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 7-66114C1E3658A6642848911B646F3D4F will be ignored
-[87036:90144:0527/170219.479:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame B-1388241EC8FF82761CB9F40AF074E7BC will be ignored
-[75128:83844:0527/170736.769:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame D-9C61D5FD7613C38CBA2487C159540ED2 will be ignored
-[84956:84960:0527/172931.125:ERROR:device_event_log_impl.cc(196)] [17:29:30.911] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
-[90244:74028:0527/174455.938:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame F-AFF588CD1DEB9D46B0C4628C34591751 will be ignored
-[84956:84960:0527/180738.386:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[67364:57732:0527/195800.268:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
+[67364:57732:0527/195800.327:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[87636:67540:0527/195803.395:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-C8BC6160552DA45CE82996DF1545C125 will be ignored
+[88944:57516:0527/200115.619:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 7-34297F5A9981FB0298A596624241FFA1 will be ignored
+[84644:24376:0527/200400.476:WARNING:angle_platform_impl.cc(49)] HLSLCompiler.cpp:250 (rx::HLSLCompiler::compileToBinary): 
+C:\fakepath(103,1-6): warning X4000: use of potentially uninitialized variable (dyn_index_vec4_float4_int)
+
+[84644:4732:0527/200400.557:WARNING:angle_platform_impl.cc(49)] HLSLCompiler.cpp:250 (rx::HLSLCompiler::compileToBinary): 
+C:\fakepath(136,1): warning X4000: use of potentially uninitialized variable (f_i_int_int_int2)
+C:\fakepath(138,1): warning X4000: use of potentially uninitialized variable (f_i_int_int_int2)
+C:\fakepath(174,1): warning X4000: use of potentially uninitialized variable (f_u_int_int_int)
+
+[84644:80192:0527/200400.746:WARNING:angle_platform_impl.cc(49)] HLSLCompiler.cpp:250 (rx::HLSLCompiler::compileToBinary): 
+C:\fakepath(166,1): warning X4000: use of potentially uninitialized variable (f_renderMipMapLevel_int)
+
+[84644:61540:0527/200400.947:ERROR:gl_utils.cc(415)] [.WebGL-00001CE0056FBF00] GL_INVALID_OPERATION: Two textures of different types use the same sampler location.
+[84644:61540:0527/200400.953:ERROR:gl_utils.cc(415)] [.WebGL-00001CE0056FBF00] GL_INVALID_OPERATION: Two textures of different types use the same sampler location.
+[84548:89524:0527/202553.883:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame B-EEA220347C0B321B2B8B76463C6D7019 will be ignored
+[44660:54992:0527/202554.831:WARNING:spdy_session.cc(2985)] Received HEADERS for invalid stream 29
+[82516:86952:0527/205342.699:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame D-77A596883EDF678DB117C475F1E3C321 will be ignored
+[84644:43676:0527/205712.256:WARNING:angle_platform_impl.cc(49)] HLSLCompiler.cpp:250 (rx::HLSLCompiler::compileToBinary): 
+C:\fakepath(95,23-33): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have undefined value
+C:\fakepath(96,23-33): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have undefined value
+
+[84644:76132:0527/205712.319:WARNING:angle_platform_impl.cc(49)] HLSLCompiler.cpp:250 (rx::HLSLCompiler::compileToBinary): 
+C:\fakepath(382,11-39): warning X4008: floating point division by zero
+C:\fakepath(382,11-39): warning X4008: floating point division by zero
+
+[84644:61540:0527/205712.560:ERROR:gl_utils.cc(415)] [.WebGL-00004AB80575B800] GL_INVALID_OPERATION: Two textures of different types use the same sampler location.
+[67364:57732:0528/071350.085:WARNING:sad_tab.cc(255)] Tab Killed: https://editor.unrealengine.com/
+[67364:57732:0528/071350.414:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071350.746:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071351.080:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071351.414:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071351.747:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071352.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071352.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071352.745:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071353.080:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071353.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071353.747:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071354.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071354.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071354.745:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071355.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071355.412:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071355.746:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071356.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071356.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071356.745:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071357.080:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071357.412:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071357.747:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071358.080:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071358.414:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071358.746:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071359.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071359.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
+[67364:57732:0528/071359.747:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
