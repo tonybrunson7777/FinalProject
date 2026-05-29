@@ -1,11 +1,6 @@
-[47224:47864:0529/184313.718:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
-[47224:24808:0529/184313.755:ERROR:google_update_settings.cc(265)] Failed opening key Software\Chromium to set usagestats; result: 5
-[47224:47864:0529/184313.763:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
-[47224:24808:0529/184315.986:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[47224:24808:0529/184315.990:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[47224:24808:0529/184316.003:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[47224:24808:0529/184316.004:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[47224:47496:0529/184316.426:WARNING:value_store_frontend.cc(47)] Reading ahfgeienlihckogmohjhadlkjgocpleb.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[47224:47496:0529/184316.427:WARNING:value_store_frontend.cc(47)] Reading mhjfbmdgcfjbbpaeojofohoefgiehjai.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[34540:47328:0529/184318.420:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-C4E8965C3018B52144BFA746ED3C7CEE will be ignored
-[47224:47864:0529/184406.270:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[46660:25008:0529/045330.200:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
+[46660:25008:0529/045330.236:ERROR:os_crypt_win.cc(100)] Failed to decrypt: Key not valid for use in specified state. (0x8009000B)
+[46660:25008:0529/045330.275:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[30052:20404:0529/045334.618:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-E40386B6B56A8D9A0D4368A2025C69D8 will be ignored
+[40308:45508:0529/045334.666:ERROR:entry_impl.cc(1029)] No file for 8000000c
+[46660:25008:0529/045738.978:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
