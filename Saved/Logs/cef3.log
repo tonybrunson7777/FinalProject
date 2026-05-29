@@ -1,5 +1,51 @@
-[36656:36480:0528/162956.382:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
-[36656:36480:0528/162956.447:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
-[26088:26968:0528/163001.302:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-0F80F8289E5D3F0DD5BA0AE5B86DA610 will be ignored
-[35924:4668:0528/180019.708:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 7-5026DC9AA87242D051BFC210C27FE55E will be ignored
-[36656:36480:0528/215701.775:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[48032:2040:0529/224111.827:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
+[48032:46336:0529/224112.079:ERROR:google_update_settings.cc(265)] Failed opening key Software\Chromium to set usagestats; result: 5
+[48032:2040:0529/224112.199:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[48032:14632:0529/224158.704:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[48032:14632:0529/224158.707:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[48032:14632:0529/224158.707:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[48032:14632:0529/224158.709:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[48032:14632:0529/224159.477:WARNING:value_store_frontend.cc(47)] Reading ahfgeienlihckogmohjhadlkjgocpleb.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[48032:14632:0529/224159.478:WARNING:value_store_frontend.cc(47)] Reading mhjfbmdgcfjbbpaeojofohoefgiehjai.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[15028:22500:0529/224159.711:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-85E955611338201C2F44B9143B91F0C1 will be ignored
+[48032:36472:0529/224200.101:WARNING:browser_info.cc(345)] Returning a speculative frame for [8,9]
+[48032:2040:0529/224200.200:WARNING:browser_info.cc(345)] Returning a speculative frame for [9,9]
+[48032:2040:0529/224200.200:WARNING:browser_info.cc(345)] Returning a speculative frame for [9,9]
+[48032:2040:0529/224200.200:WARNING:browser_info.cc(345)] Returning a speculative frame for [9,9]
+[48032:2040:0529/224200.200:WARNING:browser_info.cc(345)] Returning a speculative frame for [9,9]
+[48032:36472:0529/224200.204:WARNING:browser_info.cc(345)] Returning a speculative frame for [9,9]
+[48032:36472:0529/224200.414:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[48032:36472:0529/224200.420:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[48032:36472:0529/224200.422:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[41756:20628:0529/224202.272:WARNING:codec.cc(525)] Explicitly added H264 constrained baseline to list of supported formats.
+[19680:37312:0529/224202.565:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -100
+[19680:37312:0529/224202.809:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -107
+[41756:20628:0529/224202.873:WARNING:codec.cc(525)] Explicitly added H264 constrained baseline to list of supported formats.
+[41756:48744:0529/224202.886:WARNING:codec.cc(525)] Explicitly added H264 constrained baseline to list of supported formats.
+[41756:48744:0529/224202.888:WARNING:codec.cc(525)] Explicitly added H264 constrained baseline to list of supported formats.
+[41756:48744:0529/224202.888:WARNING:codec.cc(525)] Explicitly added H264 constrained baseline to list of supported formats.
+[48032:36472:0529/224203.552:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[48032:36472:0529/224203.744:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[19680:37312:0529/224213.617:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -100
+[19680:37312:0529/224224.739:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -100
+[48032:36472:0529/224415.547:WARNING:browser_info.cc(345)] Returning a speculative frame for [10,9]
+[48032:2040:0529/224415.591:WARNING:browser_info.cc(345)] Returning a speculative frame for [10,9]
+[48032:2040:0529/224415.591:WARNING:browser_info.cc(345)] Returning a speculative frame for [10,9]
+[48032:2040:0529/224415.591:WARNING:browser_info.cc(345)] Returning a speculative frame for [10,9]
+[48032:2040:0529/224415.591:WARNING:browser_info.cc(345)] Returning a speculative frame for [10,9]
+[45468:45428:0529/224418.026:WARNING:codec.cc(525)] Explicitly added H264 constrained baseline to list of supported formats.
+[45468:45428:0529/224418.031:WARNING:codec.cc(525)] Explicitly added H264 constrained baseline to list of supported formats.
+[45468:46048:0529/224418.035:WARNING:codec.cc(525)] Explicitly added H264 constrained baseline to list of supported formats.
+[45468:46048:0529/224418.035:WARNING:codec.cc(525)] Explicitly added H264 constrained baseline to list of supported formats.
+[45468:46048:0529/224418.035:WARNING:codec.cc(525)] Explicitly added H264 constrained baseline to list of supported formats.
+[48032:2040:0529/225556.174:ERROR:device_event_log_impl.cc(196)] [22:55:55.906] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+[48032:36472:0529/225605.973:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[48032:36472:0529/225606.626:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[48032:36472:0529/225607.612:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[48032:36472:0529/225610.916:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[48032:36472:0529/225612.367:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[19680:37312:0529/225613.248:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -107
+[19680:37312:0529/225614.120:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -100
+[19680:37312:0529/225627.911:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -107
+[19680:37312:0529/225637.558:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -100
+[48032:2040:0529/225920.816:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

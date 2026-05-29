@@ -25,9 +25,19 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Door")
 	float OpenYawAngle = 90.0f;
 
+	/** If set, this door requires the matching virtual key from a treasure chest. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Door|Key")
+	FName RequiredKeyId;
+
+	/** When opened, removes the virtual key so the HUD can hide the key icon. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Door|Key")
+	bool bConsumeKeyOnOpen = true;
+
 	UPROPERTY(BlueprintReadOnly, Category = "Door")
 	bool bIsOpen = false;
 
 	UPROPERTY()
 	FRotator ClosedRotation;
+
+	void OpenDoor();
 };

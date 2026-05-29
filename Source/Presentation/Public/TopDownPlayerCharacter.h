@@ -35,6 +35,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "TopDown|Health")
 	TObjectPtr<class UHeartHealthComponent> HeartHealth;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "TopDown|Keys")
+	TObjectPtr<class UVirtualKeyInventoryComponent> VirtualKeyInventory;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TopDown|Movement")
 	bool bUseEightDirectionFacing = true;
 

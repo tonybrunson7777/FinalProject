@@ -1,6 +1,7 @@
 #include "InteractableDoor.h"
 
 #include "Components/StaticMeshComponent.h"
+#include "VirtualKeyInventoryComponent.h"
 
 AInteractableDoor::AInteractableDoor()
 {
@@ -18,14 +19,42 @@ void AInteractableDoor::Interact_Implementation(AActor* Interactor)
 {
 	if (bIsOpen)
 	{
-		SetActorRotation(ClosedRotation);
-		bIsOpen = false;
+		return;
 	}
-	else
+
+	if (!RequiredKeyId.IsNone())
 	{
-		ClosedRotation = GetActorRotation();
-		const FRotator OpenRotation = ClosedRotation + FRotator(0.0f, OpenYawAngle, 0.0f);
-		SetActorRotation(OpenRotation);
-		bIsOpen = true;
+		UVirtualKeyInventoryComponent* KeyInventory = IsValid(Interactor)
+			? Interactor->FindComponentByClass<UVirtualKeyInventoryComponent>()
+			: nullptr;
+
+		if (!IsValid(KeyInventory) || !KeyInventory->HasVirtualKey(RequiredKeyId))
+		{
+			return;
+		}
+
+		OpenDoor();
+
+		if (bConsumeKeyOnOpen)
+		{
+			KeyInventory->ConsumeVirtualKey(RequiredKeyId);
+		}
+
+		return;
 	}
+
+	OpenDoor();
+}
+
+void AInteractableDoor::OpenDoor()
+{
+	if (bIsOpen)
+	{
+		return;
+	}
+
+	ClosedRotation = GetActorRotation();
+	const FRotator OpenRotation = ClosedRotation + FRotator(0.0f, OpenYawAngle, 0.0f);
+	SetActorRotation(OpenRotation);
+	bIsOpen = true;
 }

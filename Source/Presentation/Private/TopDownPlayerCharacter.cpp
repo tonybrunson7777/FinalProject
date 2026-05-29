@@ -8,6 +8,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "HeartHealthComponent.h"
 #include "PlayerInteractionComponent.h"
+#include "VirtualKeyInventoryComponent.h"
 #include "TimerManager.h"
 
 ATopDownPlayerCharacter::ATopDownPlayerCharacter()
@@ -45,6 +46,7 @@ ATopDownPlayerCharacter::ATopDownPlayerCharacter()
 	PlayerInteraction = CreateDefaultSubobject<UPlayerInteractionComponent>(TEXT("PlayerInteraction"));
 	BombInventory = CreateDefaultSubobject<UBombInventoryComponent>(TEXT("BombInventory"));
 	HeartHealth = CreateDefaultSubobject<UHeartHealthComponent>(TEXT("HeartHealth"));
+	VirtualKeyInventory = CreateDefaultSubobject<UVirtualKeyInventoryComponent>(TEXT("VirtualKeyInventory"));
 
 	HeartHealth->MaxHearts = 4;
 	HeartHealth->StartingHearts = 4;
