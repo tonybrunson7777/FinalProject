@@ -8,6 +8,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "HeartHealthComponent.h"
 #include "PlayerInteractionComponent.h"
+#include "TimerManager.h"
 
 ATopDownPlayerCharacter::ATopDownPlayerCharacter()
 {
@@ -20,7 +21,7 @@ ATopDownPlayerCharacter::ATopDownPlayerCharacter()
 
 	if (UCharacterMovementComponent* Movement = GetCharacterMovement())
 	{
-		// Zelda-style top-down movement: keep facing stable, do not auto-rotate with input.
+		// Zelda-style top-down movement
 		Movement->bOrientRotationToMovement = false;
 		Movement->bUseControllerDesiredRotation = false;
 		Movement->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
@@ -72,6 +73,12 @@ void ATopDownPlayerCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
+	if (bIsRolling)
+	{
+		UpdateRoll(DeltaSeconds);
+		return;
+	}
+
 	CurrentMoveInput = FVector2D(LastMoveRightValue, LastMoveForwardValue);
 	if (bUseEightDirectionFacing && CurrentMoveInput.SizeSquared() > KINDA_SMALL_NUMBER)
 	{
@@ -118,6 +125,7 @@ void ATopDownPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &ATopDownPlayerCharacter::MoveRight);
 	PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &ATopDownPlayerCharacter::HandleInteractPressed);
 	PlayerInputComponent->BindAction(TEXT("PlaceBomb"), IE_Pressed, this, &ATopDownPlayerCharacter::HandlePlaceBombPressed);
+	PlayerInputComponent->BindAction(TEXT("Roll"), IE_Pressed, this, &ATopDownPlayerCharacter::HandleRollPressed);
 
 	if (bEnableMovementDebug && GEngine)
 	{
@@ -128,6 +136,11 @@ void ATopDownPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 void ATopDownPlayerCharacter::MoveForward(float Value)
 {
 	LastMoveForwardValue = Value;
+
+	if (bIsRolling)
+	{
+		return;
+	}
 
 	if (FMath::IsNearlyZero(Value))
 	{
@@ -140,6 +153,11 @@ void ATopDownPlayerCharacter::MoveForward(float Value)
 void ATopDownPlayerCharacter::MoveRight(float Value)
 {
 	LastMoveRightValue = Value;
+
+	if (bIsRolling)
+	{
+		return;
+	}
 
 	if (FMath::IsNearlyZero(Value))
 	{
@@ -163,4 +181,82 @@ void ATopDownPlayerCharacter::HandlePlaceBombPressed()
 	{
 		PlayerInteraction->PlaceBomb();
 	}
+}
+
+void ATopDownPlayerCharacter::HandleRollPressed()
+{
+	if (bIsRolling || bRollOnCooldown)
+	{
+		return;
+	}
+
+	StartRoll();
+}
+
+void ATopDownPlayerCharacter::StartRoll()
+{
+	const FVector RollDirection = GetActorForwardVector().GetSafeNormal2D();
+	if (RollDirection.IsNearlyZero())
+	{
+		return;
+	}
+
+	if (UCharacterMovementComponent* Movement = GetCharacterMovement())
+	{
+		Movement->StopMovementImmediately();
+	}
+
+	RollStartLocation = GetActorLocation();
+	RollEndLocation = RollStartLocation + RollDirection * RollDistance;
+	RollElapsedTime = 0.0f;
+	bIsRolling = true;
+
+	if (IsValid(HeartHealth))
+	{
+		HeartHealth->SetDamageImmuneForDuration(RollInvulnerabilityDuration);
+	}
+
+	bRollOnCooldown = true;
+	if (UWorld* World = GetWorld())
+	{
+		World->GetTimerManager().ClearTimer(RollCooldownTimerHandle);
+		World->GetTimerManager().SetTimer(
+			RollCooldownTimerHandle,
+			this,
+			&ATopDownPlayerCharacter::EndRollCooldown,
+			FMath::Max(RollCooldownDuration, KINDA_SMALL_NUMBER),
+			false
+		);
+	}
+}
+
+void ATopDownPlayerCharacter::UpdateRoll(float DeltaSeconds)
+{
+	RollElapsedTime += DeltaSeconds;
+	const float Alpha = FMath::Clamp(RollElapsedTime / FMath::Max(RollDuration, KINDA_SMALL_NUMBER), 0.0f, 1.0f);
+	const FVector NewLocation = FMath::Lerp(RollStartLocation, RollEndLocation, Alpha);
+
+	FHitResult Hit;
+	SetActorLocation(NewLocation, true, &Hit);
+
+	if (Alpha >= 1.0f || Hit.bBlockingHit)
+	{
+		EndRoll();
+	}
+}
+
+void ATopDownPlayerCharacter::EndRoll()
+{
+	bIsRolling = false;
+	RollElapsedTime = 0.0f;
+
+	if (UCharacterMovementComponent* Movement = GetCharacterMovement())
+	{
+		Movement->StopMovementImmediately();
+	}
+}
+
+void ATopDownPlayerCharacter::EndRollCooldown()
+{
+	bRollOnCooldown = false;
 }

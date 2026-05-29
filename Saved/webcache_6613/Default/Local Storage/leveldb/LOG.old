@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-2026/05/27-19:55:42.081 1347c Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
-2026/05/27-19:55:42.085 1347c Recovering log #8
-2026/05/27-19:55:42.086 1347c Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/000008.log 
-=======
-2026/05/28-17:34:17.456 6df0 Reusing MANIFEST C:\SOURCE\FinalProject\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
-2026/05/28-17:34:17.461 6df0 Recovering log #3
-2026/05/28-17:34:17.464 6df0 Reusing old log C:\SOURCE\FinalProject\Saved\webcache_6613\Default\Local Storage\leveldb/000003.log 
->>>>>>> Development
-=======
-2026/05/28-07:33:24.023 a0bc Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
-2026/05/28-07:33:24.032 a0bc Recovering log #38
-2026/05/28-07:33:24.032 a0bc Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/000038.log 
->>>>>>> 6c13436ca0f98ce270209e90b7289177881b4bdc
+2026/05/29-06:29:52.531 b2ec Reusing MANIFEST C:\SOURCE\FinalProject\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
+2026/05/29-06:29:52.536 b2ec Recovering log #3
+2026/05/29-06:29:52.539 b2ec Reusing old log C:\SOURCE\FinalProject\Saved\webcache_6613\Default\Local Storage\leveldb/000003.log 

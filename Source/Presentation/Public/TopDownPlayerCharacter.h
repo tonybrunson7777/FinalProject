@@ -38,6 +38,24 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TopDown|Movement")
 	bool bUseEightDirectionFacing = true;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TopDown|Roll", meta = (ClampMin = "1.0", UIMin = "1.0"))
+	float RollDistance = 300.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TopDown|Roll", meta = (ClampMin = "0.05", UIMin = "0.05"))
+	float RollDuration = 0.35f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TopDown|Roll", meta = (ClampMin = "0.0", UIMin = "0.0"))
+	float RollInvulnerabilityDuration = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TopDown|Roll", meta = (ClampMin = "0.0", UIMin = "0.0"))
+	float RollCooldownDuration = 2.0f;
+
+	UPROPERTY(BlueprintReadOnly, Category = "TopDown|Roll")
+	bool bIsRolling = false;
+
+	UPROPERTY(BlueprintReadOnly, Category = "TopDown|Roll")
+	bool bRollOnCooldown = false;
+
 	float LastMoveForwardValue = 0.0f;
 	float LastMoveRightValue = 0.0f;
 	float DebugElapsedTime = 0.0f;
@@ -54,4 +72,18 @@ protected:
 
 	UFUNCTION()
 	void HandlePlaceBombPressed();
+
+	UFUNCTION()
+	void HandleRollPressed();
+
+	void StartRoll();
+	void UpdateRoll(float DeltaSeconds);
+	void EndRoll();
+	void EndRollCooldown();
+
+	FVector RollStartLocation = FVector::ZeroVector;
+	FVector RollEndLocation = FVector::ZeroVector;
+	float RollElapsedTime = 0.0f;
+
+	FTimerHandle RollCooldownTimerHandle;
 };

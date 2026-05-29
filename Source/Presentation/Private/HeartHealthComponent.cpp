@@ -1,6 +1,7 @@
 #include "HeartHealthComponent.h"
 
 #include "GameFramework/Actor.h"
+#include "TimerManager.h"
 
 UHeartHealthComponent::UHeartHealthComponent()
 {
@@ -61,9 +62,50 @@ bool UHeartHealthComponent::IsDead() const
 	return CurrentHearts <= 0;
 }
 
+void UHeartHealthComponent::SetDamageImmune(bool bImmune)
+{
+	bIsDamageImmune = bImmune;
+
+	if (!bImmune)
+	{
+		if (UWorld* World = GetWorld())
+		{
+			World->GetTimerManager().ClearTimer(DamageImmunityTimerHandle);
+		}
+	}
+}
+
+void UHeartHealthComponent::SetDamageImmuneForDuration(float Duration)
+{
+	if (Duration <= 0.0f)
+	{
+		SetDamageImmune(false);
+		return;
+	}
+
+	SetDamageImmune(true);
+
+	if (UWorld* World = GetWorld())
+	{
+		World->GetTimerManager().ClearTimer(DamageImmunityTimerHandle);
+		World->GetTimerManager().SetTimer(
+			DamageImmunityTimerHandle,
+			this,
+			&UHeartHealthComponent::ClearDamageImmunity,
+			Duration,
+			false
+		);
+	}
+}
+
+void UHeartHealthComponent::ClearDamageImmunity()
+{
+	bIsDamageImmune = false;
+}
+
 void UHeartHealthComponent::HandleTakeAnyDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser)
 {
-	if (Damage <= 0.0f)
+	if (bIsDamageImmune || Damage <= 0.0f)
 	{
 		return;
 	}

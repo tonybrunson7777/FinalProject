@@ -44,7 +44,23 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Health|Hearts")
 	bool IsDead() const;
 
+	UFUNCTION(BlueprintPure, Category = "Health|Hearts")
+	bool IsDamageImmune() const { return bIsDamageImmune; }
+
+	UFUNCTION(BlueprintCallable, Category = "Health|Hearts")
+	void SetDamageImmune(bool bImmune);
+
+	/** Immune to heart damage for the given duration (seconds). */
+	UFUNCTION(BlueprintCallable, Category = "Health|Hearts")
+	void SetDamageImmuneForDuration(float Duration);
+
 protected:
+	UPROPERTY(BlueprintReadOnly, Category = "Health|Hearts")
+	bool bIsDamageImmune = false;
+
+	FTimerHandle DamageImmunityTimerHandle;
+
+	void ClearDamageImmunity();
 	UFUNCTION()
 	void HandleTakeAnyDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser);
 
