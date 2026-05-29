@@ -1,3 +1,54 @@
-2026/05/29-06:31:45.250 5414 Reusing MANIFEST C:\Users\tonyb\OneDrive\Desktop\PresentationFinalProject\FinalProject\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
-2026/05/29-06:31:45.253 5414 Recovering log #3
-2026/05/29-06:31:45.255 5414 Reusing old log C:\Users\tonyb\OneDrive\Desktop\PresentationFinalProject\FinalProject\Saved\webcache_6613\Default\Local Storage\leveldb/000003.log 
+2026/05/29-11:19:21.817 a38c Reusing MANIFEST C:\Users\tonyb\OneDrive\Desktop\PresentationFinalProject\FinalProject\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
+2026/05/29-11:19:21.821 a38c Recovering log #3
+2026/05/29-11:19:21.823 a38c Reusing old log C:\Users\tonyb\OneDrive\Desktop\PresentationFinalProject\FinalProject\Saved\webcache_6613\Default\Local Storage\leveldb/000003.log 
+2026/05/29-11:27:18.562 ba4c Level-0 table #5: started
+2026/05/29-11:27:18.566 ba4c Level-0 table #5: 78026 bytes OK
+2026/05/29-11:27:18.571 ba4c Delete type=0 #3
+2026/05/29-11:30:18.563 ba4c Level-0 table #7: started
+2026/05/29-11:30:18.568 ba4c Level-0 table #7: 65774 bytes OK
+2026/05/29-11:30:18.573 ba4c Delete type=0 #4
+2026/05/29-11:33:18.575 ba4c Level-0 table #9: started
+2026/05/29-11:33:18.580 ba4c Level-0 table #9: 70726 bytes OK
+2026/05/29-11:33:18.584 ba4c Delete type=0 #6
+2026/05/29-11:36:18.562 ba4c Level-0 table #11: started
+2026/05/29-11:36:18.567 ba4c Level-0 table #11: 70710 bytes OK
+2026/05/29-11:36:18.571 ba4c Delete type=0 #8
+2026/05/29-11:39:18.572 ba4c Level-0 table #13: started
+2026/05/29-11:39:18.576 ba4c Level-0 table #13: 70750 bytes OK
+2026/05/29-11:39:18.578 ba4c Delete type=0 #10
+2026/05/29-11:42:18.579 ba4c Level-0 table #15: started
+2026/05/29-11:42:18.595 ba4c Level-0 table #15: 71914 bytes OK
+2026/05/29-11:42:18.601 ba4c Delete type=0 #12
+2026/05/29-11:42:18.601 ba4c Compacting 4@0 + 1@1 files
+2026/05/29-11:42:18.615 ba4c Generated table #16@0: 3 keys, 24381 bytes
+2026/05/29-11:42:18.615 ba4c Compacted 4@0 + 1@1 files => 24381 bytes
+2026/05/29-11:42:18.620 ba4c compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/05/29-11:42:18.621 ba4c Delete type=2 #7
+2026/05/29-11:42:18.621 ba4c Delete type=2 #9
+2026/05/29-11:42:18.621 ba4c Delete type=2 #11
+2026/05/29-11:42:18.621 ba4c Delete type=2 #13
+2026/05/29-11:42:18.621 ba4c Delete type=2 #15
+2026/05/29-12:16:11.164 ba4c Level-0 table #18: started
+2026/05/29-12:16:11.170 ba4c Level-0 table #18: 75166 bytes OK
+2026/05/29-12:16:11.172 ba4c Delete type=0 #14
+2026/05/29-12:16:49.837 ba4c Level-0 table #20: started
+2026/05/29-12:16:49.842 ba4c Level-0 table #20: 76486 bytes OK
+2026/05/29-12:16:49.844 ba4c Delete type=0 #17
+2026/05/29-12:17:27.699 ba4c Level-0 table #22: started
+2026/05/29-12:17:27.705 ba4c Level-0 table #22: 78022 bytes OK
+2026/05/29-12:17:27.708 ba4c Delete type=0 #19
+2026/05/29-12:17:43.696 ba4c Level-0 table #24: started
+2026/05/29-12:17:43.701 ba4c Level-0 table #24: 77775 bytes OK
+2026/05/29-12:17:43.704 ba4c Delete type=0 #21
+2026/05/29-12:17:43.705 ba4c Compacting 4@0 + 1@1 files
+2026/05/29-12:17:43.711 ba4c Generated table #25@0: 4 keys, 26068 bytes
+2026/05/29-12:17:43.711 ba4c Compacted 4@0 + 1@1 files => 26068 bytes
+2026/05/29-12:17:43.714 ba4c compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/05/29-12:17:43.714 ba4c Delete type=2 #16
+2026/05/29-12:17:43.715 ba4c Delete type=2 #18
+2026/05/29-12:17:43.715 ba4c Delete type=2 #20
+2026/05/29-12:17:43.715 ba4c Delete type=2 #22
+2026/05/29-12:17:43.715 ba4c Delete type=2 #24
+2026/05/29-12:18:07.679 ba4c Level-0 table #27: started
+2026/05/29-12:18:07.683 ba4c Level-0 table #27: 78286 bytes OK
+2026/05/29-12:18:07.685 ba4c Delete type=0 #23
