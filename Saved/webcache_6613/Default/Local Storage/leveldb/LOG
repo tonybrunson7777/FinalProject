@@ -1,3 +1,6 @@
-2026/05/28-11:26:08.293 6598 Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
-2026/05/28-11:26:08.301 6598 Recovering log #38
-2026/05/28-11:26:08.302 6598 Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/000038.log 
+2026/05/28-16:29:56.482 851c Reusing MANIFEST D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/MANIFEST-000001
+2026/05/28-16:29:56.486 851c Recovering log #38
+2026/05/28-16:29:56.486 851c Reusing old log D:\UE_5.5\Presentation\Saved\webcache_6613\Default\Local Storage\leveldb/000038.log 
+2026/05/28-18:00:56.418 5cf4 Level-0 table #42: started
+2026/05/28-18:00:56.422 5cf4 Level-0 table #42: 64598 bytes OK
+2026/05/28-18:00:56.423 5cf4 Delete type=0 #38
