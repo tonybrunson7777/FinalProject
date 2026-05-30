@@ -85,10 +85,7 @@ void ATopDownPlayerCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	if (HeartHealth)
-	{
-		m_fHealth = static_cast<float>(HeartHealth->CurrentHearts);
-	}
+	
 
 	if (bIsRolling)
 	{
