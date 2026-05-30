@@ -12,7 +12,10 @@ public class Presentation : ModuleRules
 				"Core",
 				"CoreUObject",
 				"Engine",
-				"InputCore"
+				"InputCore",
+				"UMG",
+				"Slate",
+				"SlateCore"
 			}
 		);
 	}

@@ -8,6 +8,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "HeartHealthComponent.h"
 #include "PlayerInteractionComponent.h"
+#include "Blueprint/UserWidget.h"
 
 ATopDownPlayerCharacter::ATopDownPlayerCharacter()
 {
@@ -66,11 +67,23 @@ void ATopDownPlayerCharacter::BeginPlay()
 		bHasController ? FColor::Green : FColor::Red,
 		FString::Printf(TEXT("TopDown BeginPlay - Possessed: %s"), bHasController ? TEXT("YES") : TEXT("NO"))
 	);
+
+	if (m_cPlayerHUD != nullptr)
+	{
+		//Add HUD to Viewport
+		UUserWidget* HUD = CreateWidget<UUserWidget>(Cast<APlayerController>(GetController()), m_cPlayerHUD);
+		HUD->AddToViewport(9999);
+	}
 }
 
 void ATopDownPlayerCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+
+	if (HeartHealth)
+{
+    m_fHealth = static_cast<float>(HeartHealth->CurrentHearts);
+}
 
 	CurrentMoveInput = FVector2D(LastMoveRightValue, LastMoveForwardValue);
 	if (bUseEightDirectionFacing && CurrentMoveInput.SizeSquared() > KINDA_SMALL_NUMBER)
@@ -155,6 +168,16 @@ void ATopDownPlayerCharacter::HandleInteractPressed()
 	{
 		PlayerInteraction->Interact();
 	}
+}
+
+int32 ATopDownPlayerCharacter::GetCurrentBombCount() const
+{
+	return BombInventory ? BombInventory->BombCount : 0;
+}
+
+int32 ATopDownPlayerCharacter::GetCurrentHearts() const
+{
+	return HeartHealth ? HeartHealth->CurrentHearts : 0;
 }
 
 void ATopDownPlayerCharacter::HandlePlaceBombPressed()

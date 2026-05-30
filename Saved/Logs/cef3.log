@@ -1,88 +1,12 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-[67364:57732:0527/195800.268:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
-[67364:57732:0527/195800.327:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
-[87636:67540:0527/195803.395:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-C8BC6160552DA45CE82996DF1545C125 will be ignored
-[88944:57516:0527/200115.619:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 7-34297F5A9981FB0298A596624241FFA1 will be ignored
-[84644:24376:0527/200400.476:WARNING:angle_platform_impl.cc(49)] HLSLCompiler.cpp:250 (rx::HLSLCompiler::compileToBinary): 
-C:\fakepath(103,1-6): warning X4000: use of potentially uninitialized variable (dyn_index_vec4_float4_int)
-
-[84644:4732:0527/200400.557:WARNING:angle_platform_impl.cc(49)] HLSLCompiler.cpp:250 (rx::HLSLCompiler::compileToBinary): 
-C:\fakepath(136,1): warning X4000: use of potentially uninitialized variable (f_i_int_int_int2)
-C:\fakepath(138,1): warning X4000: use of potentially uninitialized variable (f_i_int_int_int2)
-C:\fakepath(174,1): warning X4000: use of potentially uninitialized variable (f_u_int_int_int)
-
-[84644:80192:0527/200400.746:WARNING:angle_platform_impl.cc(49)] HLSLCompiler.cpp:250 (rx::HLSLCompiler::compileToBinary): 
-C:\fakepath(166,1): warning X4000: use of potentially uninitialized variable (f_renderMipMapLevel_int)
-
-[84644:61540:0527/200400.947:ERROR:gl_utils.cc(415)] [.WebGL-00001CE0056FBF00] GL_INVALID_OPERATION: Two textures of different types use the same sampler location.
-[84644:61540:0527/200400.953:ERROR:gl_utils.cc(415)] [.WebGL-00001CE0056FBF00] GL_INVALID_OPERATION: Two textures of different types use the same sampler location.
-[84548:89524:0527/202553.883:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame B-EEA220347C0B321B2B8B76463C6D7019 will be ignored
-[44660:54992:0527/202554.831:WARNING:spdy_session.cc(2985)] Received HEADERS for invalid stream 29
-[82516:86952:0527/205342.699:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame D-77A596883EDF678DB117C475F1E3C321 will be ignored
-[84644:43676:0527/205712.256:WARNING:angle_platform_impl.cc(49)] HLSLCompiler.cpp:250 (rx::HLSLCompiler::compileToBinary): 
-C:\fakepath(95,23-33): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have undefined value
-C:\fakepath(96,23-33): warning X3595: gradient instruction used in a loop with varying iteration; partial derivatives may have undefined value
-
-[84644:76132:0527/205712.319:WARNING:angle_platform_impl.cc(49)] HLSLCompiler.cpp:250 (rx::HLSLCompiler::compileToBinary): 
-C:\fakepath(382,11-39): warning X4008: floating point division by zero
-C:\fakepath(382,11-39): warning X4008: floating point division by zero
-
-[84644:61540:0527/205712.560:ERROR:gl_utils.cc(415)] [.WebGL-00004AB80575B800] GL_INVALID_OPERATION: Two textures of different types use the same sampler location.
-[67364:57732:0528/071350.085:WARNING:sad_tab.cc(255)] Tab Killed: https://editor.unrealengine.com/
-[67364:57732:0528/071350.414:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071350.746:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071351.080:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071351.414:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071351.747:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071352.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071352.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071352.745:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071353.080:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071353.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071353.747:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071354.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071354.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071354.745:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071355.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071355.412:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071355.746:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071356.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071356.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071356.745:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071357.080:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071357.412:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071357.747:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071358.080:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071358.414:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071358.746:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071359.079:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071359.413:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-[67364:57732:0528/071359.747:ERROR:network_service_instance_impl.cc(608)] Network service crashed, restarting service.
-=======
-[25948:18828:0528/174315.389:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
-[25948:46848:0528/174315.433:ERROR:google_update_settings.cc(265)] Failed opening key Software\Chromium to set usagestats; result: 5
-[25948:18828:0528/174315.439:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
-[25948:14484:0528/174317.229:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[25948:14484:0528/174317.232:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[25948:14484:0528/174317.233:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[25948:14484:0528/174317.235:WARNING:leveldb_database.cc(141)] Unable to open C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: C:\SOURCE\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[25948:21032:0528/174318.934:WARNING:value_store_frontend.cc(47)] Reading ahfgeienlihckogmohjhadlkjgocpleb.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[25948:21032:0528/174318.936:WARNING:value_store_frontend.cc(47)] Reading mhjfbmdgcfjbbpaeojofohoefgiehjai.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[43840:15740:0528/174320.095:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-3E7C3B1344F0771F76D8C7685219AC0B will be ignored
-[42424:19052:0528/174322.548:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -100
-[42424:19052:0528/174322.677:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -100
-[25948:56860:0528/174326.199:ERROR:cast_crl.cc(443)] CRL - Verification failed.
-[25948:56860:0528/174326.201:ERROR:cast_crl.cc(443)] CRL - Verification failed.
-[25948:56860:0528/174326.266:ERROR:cast_crl.cc(443)] CRL - Verification failed.
-[25948:56860:0528/174326.381:ERROR:cast_crl.cc(443)] CRL - Verification failed.
-[42424:19052:0528/174332.240:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -107
-[42424:19052:0528/174341.063:ERROR:ssl_client_socket_impl.cc(882)] handshake failed; returned -1, SSL error code 1, net_error -107
-[25948:18828:0528/175041.604:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
->>>>>>> Development
-=======
-[37644:14800:0528/112608.007:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
-[37644:14800:0528/112608.247:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
-[36784:37212:0528/112614.551:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-F38B0D719E392177BDC273772B0D5D42 will be ignored
-[37644:14800:0528/133151.314:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
->>>>>>> 6c13436ca0f98ce270209e90b7289177881b4bdc
+[6448:6916:0529/111923.260:WARNING:chrome_main_delegate.cc(745)] This is Chrome version 128.0.6613.138 (not a warning)
+[6448:6916:0529/111923.363:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[6448:20960:0529/111936.624:WARNING:leveldb_database.cc(141)] Unable to open F:\Unreal Projects\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: F:\Unreal Projects\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[6448:3956:0529/111936.628:WARNING:leveldb_database.cc(141)] Unable to open F:\Unreal Projects\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: F:\Unreal Projects\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[6448:3956:0529/111936.632:WARNING:leveldb_database.cc(141)] Unable to open F:\Unreal Projects\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: F:\Unreal Projects\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[6448:3956:0529/111936.634:WARNING:leveldb_database.cc(141)] Unable to open F:\Unreal Projects\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata: IO error: F:\Unreal Projects\FinalProject\Saved\webcache_6613\Default\shared_proto_db\metadata/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[6448:20960:0529/111942.023:WARNING:value_store_frontend.cc(47)] Reading ahfgeienlihckogmohjhadlkjgocpleb.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[6448:20960:0529/111942.027:WARNING:value_store_frontend.cc(47)] Reading mhjfbmdgcfjbbpaeojofohoefgiehjai.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[6448:6916:0529/111942.176:ERROR:device_event_log_impl.cc(196)] [11:19:42.016] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+[27132:34160:0529/111943.159:WARNING:frame_impl.cc(430)] virtual CefFrameImpl::SendProcessMessage sent to detached frame 5-895185E1445DDAC79A45D2DCAF1A92CF will be ignored
+[6448:33972:0529/111945.693:ERROR:cast_crl.cc(443)] CRL - Verification failed.
+[6448:6916:0529/112036.835:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

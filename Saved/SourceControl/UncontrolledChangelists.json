@@ -5,6 +5,10 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
+				"D:/UE_5.7/Engine/Plugins/Interchange/Assets/Content/gltf/M_Default.uasset",
+				"F:/Unreal Projects/FinalProject/Content/Widgets/HUD_Widget/WBP_PlayerHUD.uasset",
+				"F:/Unreal Projects/FinalProject/Content/Maps/presentationMap.umap",
+				"F:/Unreal Projects/FinalProject/Content/MGB_Test_Objects/BP_TopDownPlayer.uasset",
 				"C:/SOURCE/FinalProject/Content/Maps/MGB_Test.umap",
 				"C:/SOURCE/FinalProject/Content/MGB_Test_Objects/BP_BasicEnemy.uasset",
 				"C:/SOURCE/FinalProject/Content/Diablillo/DefaultMaterial.uasset",
@@ -58,7 +62,6 @@
 				"D:/UE_5.5/Presentation/Content/walkWay_1/StaticMeshes/BP_walkWay_1.uasset",
 				"D:/UE_5.5/Presentation/Content/walkWay_1/StaticMeshes/BP_walkWay_1_wall1.uasset",
 				"D:/UE_5.5/Presentation/Content/walkWay_1/StaticMeshes/BP_walkWay_1_wall2.uasset",
-				"D:/UE_5.7/Engine/Plugins/Interchange/Assets/Content/gltf/M_Default.uasset",
 				"D:/UE_5.5/Presentation/Content/floor/Textures/albedo.uasset",
 				"D:/UE_5.5/Presentation/Content/floor/Textures/normal.uasset",
 				"D:/UE_5.5/Presentation/Content/floor/Textures/albedo1.uasset",
