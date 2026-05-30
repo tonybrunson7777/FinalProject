@@ -68,8 +68,8 @@ void ASimpleChasingEnemy::UpdateChaseAndAttackState(float DeltaSeconds)
 	
 	FaceTarget(ToTarget, DeltaSeconds);
 
-	const float DistanceToTarget = ToTarget.Size();
-	const bool bInAttackRange = DistanceToTarget <= AttackRange;
+	const float DistanceToTarget = GetDistanceToTarget2D();
+	const bool bInAttackRange = IsInMeleeRange(DistanceToTarget);
 
 	if (!bInAttackRange)
 	{
@@ -88,10 +88,35 @@ void ASimpleChasingEnemy::UpdateChaseAndAttackState(float DeltaSeconds)
 	}
 }
 
+float ASimpleChasingEnemy::GetDistanceToTarget2D() const
+{
+	if (!IsValid(TargetActor))
+	{
+		return TNumericLimits<float>::Max();
+	}
+
+	return FVector::Dist2D(GetActorLocation(), TargetActor->GetActorLocation());
+}
+
+bool ASimpleChasingEnemy::IsInMeleeRange(float Distance2D) const
+{
+	return Distance2D <= AttackRange;
+}
+
 bool ASimpleChasingEnemy::CanSeeTarget(const FVector& ToTarget) const
 {
-	return IsValid(TargetActor)
-		&& PresentationEnemyVisibility::HasLineOfSightTo(this, TargetActor)
+	if (!IsValid(TargetActor))
+	{
+		return false;
+	}
+
+	// At melee range, skip line-of-sight so point-blank hits are not blocked by floor/trace quirks.
+	if (IsInMeleeRange(ToTarget.Size2D()))
+	{
+		return IsTargetInViewAngle(ToTarget);
+	}
+
+	return PresentationEnemyVisibility::HasLineOfSightTo(this, TargetActor)
 		&& IsTargetInViewAngle(ToTarget);
 }
 
@@ -148,9 +173,9 @@ void ASimpleChasingEnemy::AttackTarget()
 		return;
 	}
 
-	const float DistanceToTarget = FVector::Dist(GetActorLocation(), TargetActor->GetActorLocation());
+	const float DistanceToTarget = GetDistanceToTarget2D();
 	const FVector ToTarget = TargetActor->GetActorLocation() - GetActorLocation();
-	if (DistanceToTarget > AttackRange || !CanSeeTarget(ToTarget))
+	if (!IsInMeleeRange(DistanceToTarget) || !CanSeeTarget(ToTarget))
 	{
 		StopAttacking();
 		return;
@@ -159,6 +184,6 @@ void ASimpleChasingEnemy::AttackTarget()
 	if (UHeartHealthComponent* TargetHealth = TargetActor->FindComponentByClass<UHeartHealthComponent>())
 	{
 		const int32 HeartsToLose = FMath::Max(1, FMath::CeilToInt(AttackDamage));
-		TargetHealth->ApplyHeartDamage(HeartsToLose);
+		TargetHealth->ApplyHeartDamage(HeartsToLose, this, TEXT("EnemyMelee"));
 	}
 }

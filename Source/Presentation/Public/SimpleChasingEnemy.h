@@ -27,7 +27,7 @@ protected:
 	float TurnSpeedDegreesPerSecond = 540.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemy|Combat")
-	float AttackRange = 15.0f;
+	float AttackRange = 150.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemy|Combat")
 	float AttackDamage = 1.0f;
@@ -50,6 +50,8 @@ protected:
 	void UpdateChaseAndAttackState(float DeltaSeconds);
 	bool IsTargetInViewAngle(const FVector& ToTarget) const;
 	bool CanSeeTarget(const FVector& ToTarget) const;
+	bool IsInMeleeRange(float Distance2D) const;
+	float GetDistanceToTarget2D() const;
 	void FaceTarget(const FVector& ToTarget, float DeltaSeconds);
 	void StartAttacking();
 	void StopAttacking();

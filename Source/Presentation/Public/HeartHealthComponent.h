@@ -36,13 +36,16 @@ public:
 	FOnDeathSignature OnDeath;
 
 	UFUNCTION(BlueprintCallable, Category = "Health|Hearts")
-	void ApplyHeartDamage(int32 HeartsToLose);
+	void ApplyHeartDamage(int32 HeartsToLose, AActor* DamageCauser = nullptr, FName DamageSource = NAME_None);
 
 	UFUNCTION(BlueprintCallable, Category = "Health|Hearts")
 	void HealHearts(int32 HeartsToHeal);
 
 	UFUNCTION(BlueprintPure, Category = "Health|Hearts")
 	bool IsDead() const;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Health|Debug")
+	bool bEnableDamageDebug = false;
 
 	UFUNCTION(BlueprintPure, Category = "Health|Hearts")
 	bool IsDamageImmune() const { return bIsDamageImmune; }
@@ -65,4 +68,5 @@ protected:
 	void HandleTakeAnyDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser);
 
 	void BroadcastHeartsChanged();
+	void LogDamageDebug(const FString& Event, int32 HeartsToLose, AActor* DamageCauser, FName DamageSource) const;
 };

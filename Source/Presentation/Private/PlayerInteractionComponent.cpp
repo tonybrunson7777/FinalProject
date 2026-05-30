@@ -17,18 +17,18 @@ bool UPlayerInteractionComponent::Interact()
 	FHitResult Hit;
 	if (!FindInteractable(Hit))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Interact failed: no interactable hit."));
+		// UE_LOG(LogTemp, Warning, TEXT("Interact failed: no interactable hit."));
 		return false;
 	}
 
 	AActor* HitActor = Hit.GetActor();
 	if (!IsValid(HitActor) || !HitActor->GetClass()->ImplementsInterface(UInteractableInterface::StaticClass()))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Interact failed: actor '%s' is not interactable."), *GetNameSafe(HitActor));
+		// UE_LOG(LogTemp, Warning, TEXT("Interact failed: actor '%s' is not interactable."), *GetNameSafe(HitActor));
 		return false;
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Interact success: calling Interact on '%s'."), *GetNameSafe(HitActor));
+	// UE_LOG(LogTemp, Warning, TEXT("Interact success: calling Interact on '%s'."), *GetNameSafe(HitActor));
 	IInteractableInterface::Execute_Interact(HitActor, GetOwner());
 	return true;
 }
@@ -38,19 +38,19 @@ bool UPlayerInteractionComponent::PlaceBomb()
 	AActor* OwnerActor = GetOwner();
 	if (!IsValid(OwnerActor))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("PlaceBomb failed: owner invalid."));
+		// UE_LOG(LogTemp, Warning, TEXT("PlaceBomb failed: owner invalid."));
 		return false;
 	}
 
 	UBombInventoryComponent* BombInventory = OwnerActor->FindComponentByClass<UBombInventoryComponent>();
 	if (!IsValid(BombInventory))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("PlaceBomb failed: no BombInventoryComponent on '%s'."), *GetNameSafe(OwnerActor));
+		// UE_LOG(LogTemp, Warning, TEXT("PlaceBomb failed: no BombInventoryComponent on '%s'."), *GetNameSafe(OwnerActor));
 		return false;
 	}
 
 	const bool bPlacedBomb = BombInventory->TryPlaceBomb();
-	UE_LOG(LogTemp, Warning, TEXT("PlaceBomb result: %s"), bPlacedBomb ? TEXT("SUCCESS") : TEXT("FAILED"));
+	// UE_LOG(LogTemp, Warning, TEXT("PlaceBomb result: %s"), bPlacedBomb ? TEXT("SUCCESS") : TEXT("FAILED"));
 	return bPlacedBomb;
 }
 
@@ -60,7 +60,7 @@ bool UPlayerInteractionComponent::FindInteractable(FHitResult& OutHit) const
 	UWorld* World = GetWorld();
 	if (!IsValid(OwnerActor) || !IsValid(World))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("FindInteractable failed: owner or world invalid."));
+		// UE_LOG(LogTemp, Warning, TEXT("FindInteractable failed: owner or world invalid."));
 		return false;
 	}
 
@@ -88,7 +88,7 @@ bool UPlayerInteractionComponent::FindInteractable(FHitResult& OutHit) const
 
 	if (!bFoundActors)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Interact: no actors in radius %.1f."), InteractionDistance);
+		// UE_LOG(LogTemp, Warning, TEXT("Interact: no actors in radius %.1f."), InteractionDistance);
 		return false;
 	}
 
@@ -122,11 +122,11 @@ bool UPlayerInteractionComponent::FindInteractable(FHitResult& OutHit) const
 
 	if (!IsValid(BestInteractable))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Interact: no interactable in radius %.1f."), InteractionDistance);
+		// UE_LOG(LogTemp, Warning, TEXT("Interact: no interactable in radius %.1f."), InteractionDistance);
 		return false;
 	}
 
 	OutHit = FHitResult(BestInteractable, nullptr, BestInteractable->GetActorLocation(), FVector::ZeroVector);
-	UE_LOG(LogTemp, Warning, TEXT("Interact: selected '%s'."), *GetNameSafe(BestInteractable));
+	// UE_LOG(LogTemp, Warning, TEXT("Interact: selected '%s'."), *GetNameSafe(BestInteractable));
 	return true;
 }

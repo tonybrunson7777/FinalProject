@@ -20,13 +20,13 @@ void UBombInventoryComponent::AddBomb(TSubclassOf<AActor> BombClass, int32 Count
 {
 	if (CountToAdd <= 0 || !*BombClass)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("AddBomb failed: invalid count/class. Count=%d Class='%s'"), CountToAdd, *GetNameSafe(BombClass.Get()));
+		// UE_LOG(LogTemp, Warning, TEXT("AddBomb failed: invalid count/class. Count=%d Class='%s'"), CountToAdd, *GetNameSafe(BombClass.Get()));
 		return;
 	}
 
 	HeldBombClass = BombClass;
 	BombCount += CountToAdd;
-	UE_LOG(LogTemp, Warning, TEXT("AddBomb success: +%d '%s'. New BombCount=%d"), CountToAdd, *GetNameSafe(BombClass.Get()), BombCount);
+	// UE_LOG(LogTemp, Warning, TEXT("AddBomb success: +%d '%s'. New BombCount=%d"), CountToAdd, *GetNameSafe(BombClass.Get()), BombCount);
 }
 
 bool UBombInventoryComponent::TryPlaceBomb()
@@ -34,21 +34,21 @@ bool UBombInventoryComponent::TryPlaceBomb()
 	AActor* OwnerActor = GetOwner();
 	if (!IsValid(OwnerActor) || BombCount <= 0 || !*HeldBombClass)
 	{
-		UE_LOG(
-			LogTemp,
-			Warning,
-			TEXT("TryPlaceBomb failed: owner='%s' BombCount=%d HeldBombClass='%s'"),
-			*GetNameSafe(OwnerActor),
-			BombCount,
-			*GetNameSafe(HeldBombClass.Get())
-		);
+		// UE_LOG(
+		// 	LogTemp,
+		// 	Warning,
+		// 	TEXT("TryPlaceBomb failed: owner='%s' BombCount=%d HeldBombClass='%s'"),
+		// 	*GetNameSafe(OwnerActor),
+		// 	BombCount,
+		// 	*GetNameSafe(HeldBombClass.Get())
+		// );
 		return false;
 	}
 
 	UWorld* World = GetWorld();
 	if (!IsValid(World))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("TryPlaceBomb failed: world invalid."));
+		// UE_LOG(LogTemp, Warning, TEXT("TryPlaceBomb failed: world invalid."));
 		return false;
 	}
 
@@ -63,18 +63,18 @@ bool UBombInventoryComponent::TryPlaceBomb()
 	AActor* SpawnedBomb = World->SpawnActor<AActor>(HeldBombClass, SpawnLocation, SpawnRotation, SpawnParams);
 	if (!IsValid(SpawnedBomb))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("TryPlaceBomb failed: SpawnActor failed for class '%s'."), *GetNameSafe(HeldBombClass.Get()));
+		// UE_LOG(LogTemp, Warning, TEXT("TryPlaceBomb failed: SpawnActor failed for class '%s'."), *GetNameSafe(HeldBombClass.Get()));
 		return false;
 	}
 
 	ScheduleBombDetonation(SpawnedBomb);
 
 	BombCount = FMath::Max(0, BombCount - 1);
-	UE_LOG(LogTemp, Warning, TEXT("TryPlaceBomb success: spawned '%s'. Remaining BombCount=%d"), *GetNameSafe(SpawnedBomb), BombCount);
+	// UE_LOG(LogTemp, Warning, TEXT("TryPlaceBomb success: spawned '%s'. Remaining BombCount=%d"), *GetNameSafe(SpawnedBomb), BombCount);
 	if (BombCount == 0)
 	{
 		HeldBombClass = nullptr;
-		UE_LOG(LogTemp, Warning, TEXT("TryPlaceBomb: inventory empty, HeldBombClass cleared."));
+		// UE_LOG(LogTemp, Warning, TEXT("TryPlaceBomb: inventory empty, HeldBombClass cleared."));
 	}
 
 	return true;
@@ -106,7 +106,7 @@ void UBombInventoryComponent::ScheduleBombDetonation(AActor* SpawnedBomb)
 	});
 
 	World->GetTimerManager().SetTimer(FuseTimerHandle, FuseDelegate, FMath::Max(FuseSeconds, KINDA_SMALL_NUMBER), false);
-	UE_LOG(LogTemp, Warning, TEXT("Bomb fuse started: '%s' will detonate in %.2f seconds."), *GetNameSafe(SpawnedBomb), FuseSeconds);
+	// UE_LOG(LogTemp, Warning, TEXT("Bomb fuse started: '%s' will detonate in %.2f seconds."), *GetNameSafe(SpawnedBomb), FuseSeconds);
 }
 
 void UBombInventoryComponent::DetonateBomb(AActor* BombActor)
@@ -138,14 +138,14 @@ void UBombInventoryComponent::DetonateBomb(AActor* BombActor)
 	// Heart-based damage (cracked walls, enemies, player). Radial damage does not reliably hit static destructibles.
 	DamageHeartActorsInExplosionRadius(ExplosionLocation, BombActor, EventInstigator);
 
-	UE_LOG(
-		LogTemp,
-		Warning,
-		TEXT("Bomb detonated: location=%s radius=%.1f damage=%.1f"),
-		*ExplosionLocation.ToCompactString(),
-		ExplosionRadius,
-		ExplosionDamage
-	);
+	// UE_LOG(
+	// 	LogTemp,
+	// 	Warning,
+	// 	TEXT("Bomb detonated: location=%s radius=%.1f damage=%.1f"),
+	// 	*ExplosionLocation.ToCompactString(),
+	// 	ExplosionRadius,
+	// 	ExplosionDamage
+	// );
 
 	BombActor->Destroy();
 }
@@ -201,7 +201,7 @@ void UBombInventoryComponent::DamageHeartActorsInExplosionRadius(const FVector& 
 			continue;
 		}
 
-		HeartHealth->ApplyHeartDamage(HeartsToLose);
+		HeartHealth->ApplyHeartDamage(HeartsToLose, DamageCauser, TEXT("BombExplosion"));
 		DamagedActors.Add(OverlappedActor);
 	}
 }

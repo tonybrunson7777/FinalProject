@@ -29,15 +29,20 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Bomb")
 	int32 GetCurrentBombCount() const;
 
-	
+	UFUNCTION(BlueprintCallable, Category = "Death")
+	void GoToMainMenuFromDeath();
+
+	UFUNCTION(BlueprintCallable, Category = "Death")
+	void RestartLevelFromDeath();
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void PossessedBy(AController* NewController) override;
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TopDown|Debug")
-	bool bEnableMovementDebug = true;
+	bool bEnableMovementDebug = false;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "TopDown|Camera")
 	TObjectPtr<class USpringArmComponent> CameraBoom;
@@ -53,6 +58,21 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "TopDown|Health")
 	TObjectPtr<class UHeartHealthComponent> HeartHealth;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TopDown|Death")
+	TSubclassOf<class UPlayerDeathMenuWidget> DeathMenuWidgetClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TopDown|Death")
+	FName MainMenuLevelName = FName(TEXT("presentationMap"));
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TopDown|Death")
+	FName RestartLevelName = NAME_None;
+
+	UPROPERTY(BlueprintReadOnly, Category = "TopDown|Death")
+	bool bIsPlayerDead = false;
+
+	UPROPERTY(BlueprintReadOnly, Category = "TopDown|Death")
+	TObjectPtr<class UPlayerDeathMenuWidget> DeathMenuWidget;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "TopDown|Keys")
 	TObjectPtr<class UVirtualKeyInventoryComponent> VirtualKeyInventory;
@@ -98,10 +118,15 @@ protected:
 	UFUNCTION()
 	void HandleRollPressed();
 
+	UFUNCTION()
+	void HandlePlayerDeath();
+
 	void StartRoll();
 	void UpdateRoll(float DeltaSeconds);
 	void EndRoll();
 	void EndRollCooldown();
+
+	void RestoreGameplayInput();
 
 	FVector RollStartLocation = FVector::ZeroVector;
 	FVector RollEndLocation = FVector::ZeroVector;

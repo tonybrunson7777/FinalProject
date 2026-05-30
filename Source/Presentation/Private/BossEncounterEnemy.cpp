@@ -165,9 +165,13 @@ void ABossEncounterEnemy::FaceDirection(const FVector& Direction, float DeltaSec
 
 void ABossEncounterEnemy::TryApplyChargeDamage()
 {
-	if (!IsValid(TargetActor)
-		|| !PresentationEnemyVisibility::HasLineOfSightTo(this, TargetActor)
-		|| GetWorldTimerManager().IsTimerActive(ChargeDamageTimerHandle))
+	if (!IsValid(TargetActor) || GetWorldTimerManager().IsTimerActive(ChargeDamageTimerHandle))
+	{
+		return;
+	}
+
+	const float DistanceToTarget = FVector::Dist2D(GetActorLocation(), TargetActor->GetActorLocation());
+	if (DistanceToTarget > ChargeHitRange)
 	{
 		return;
 	}
@@ -175,7 +179,7 @@ void ABossEncounterEnemy::TryApplyChargeDamage()
 	if (UHeartHealthComponent* TargetHealth = TargetActor->FindComponentByClass<UHeartHealthComponent>())
 	{
 		const int32 HeartsToLose = FMath::Max(1, FMath::CeilToInt(ChargeDamage));
-		TargetHealth->ApplyHeartDamage(HeartsToLose);
+		TargetHealth->ApplyHeartDamage(HeartsToLose, this, TEXT("BossCharge"));
 	}
 
 	GetWorldTimerManager().SetTimer(

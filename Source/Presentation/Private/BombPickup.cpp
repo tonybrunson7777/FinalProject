@@ -24,31 +24,31 @@ void ABombPickup::Interact_Implementation(AActor* Interactor)
 {
 	if (!IsValid(Interactor))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("BombPickup Interact failed: interactor invalid."));
+		// UE_LOG(LogTemp, Warning, TEXT("BombPickup Interact failed: interactor invalid."));
 		return;
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("BombPickup Interact called by '%s' on pickup '%s'."), *GetNameSafe(Interactor), *GetNameSafe(this));
+	// UE_LOG(LogTemp, Warning, TEXT("BombPickup Interact called by '%s' on pickup '%s'."), *GetNameSafe(Interactor), *GetNameSafe(this));
 
 	UBombInventoryComponent* BombInventory = Interactor->FindComponentByClass<UBombInventoryComponent>();
 	if (!IsValid(BombInventory))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("BombPickup failed: '%s' has no BombInventoryComponent."), *GetNameSafe(Interactor));
+		// UE_LOG(LogTemp, Warning, TEXT("BombPickup failed: '%s' has no BombInventoryComponent."), *GetNameSafe(Interactor));
 		return;
 	}
 
 	if (!*BombClassToGive)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("BombPickup failed: BombClassToGive is not set on '%s'."), *GetNameSafe(this));
+		// UE_LOG(LogTemp, Warning, TEXT("BombPickup failed: BombClassToGive is not set on '%s'."), *GetNameSafe(this));
 		return;
 	}
 
 	BombInventory->AddBomb(BombClassToGive, FMath::Max(1, BombsGranted));
-	UE_LOG(LogTemp, Warning, TEXT("BombPickup success: granted %d bomb(s) of class '%s'."), FMath::Max(1, BombsGranted), *GetNameSafe(BombClassToGive.Get()));
+	// UE_LOG(LogTemp, Warning, TEXT("BombPickup success: granted %d bomb(s) of class '%s'."), FMath::Max(1, BombsGranted), *GetNameSafe(BombClassToGive.Get()));
 
 	if (bDestroyOnPickup)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("BombPickup '%s' destroying after pickup."), *GetNameSafe(this));
+		// UE_LOG(LogTemp, Warning, TEXT("BombPickup '%s' destroying after pickup."), *GetNameSafe(this));
 		Destroy();
 	}
 }

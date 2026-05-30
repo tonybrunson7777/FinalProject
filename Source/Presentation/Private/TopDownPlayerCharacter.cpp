@@ -7,9 +7,11 @@
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "HeartHealthComponent.h"
+#include "PlayerDeathMenuWidget.h"
 #include "PlayerInteractionComponent.h"
 #include "VirtualKeyInventoryComponent.h"
 #include "Blueprint/UserWidget.h"
+#include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
 
 ATopDownPlayerCharacter::ATopDownPlayerCharacter()
@@ -52,6 +54,7 @@ ATopDownPlayerCharacter::ATopDownPlayerCharacter()
 	HeartHealth->MaxHearts = 4;
 	HeartHealth->StartingHearts = 4;
 	HeartHealth->bDestroyOwnerOnDeath = false;
+	HeartHealth->bEnableDamageDebug = false;
 }
 
 void ATopDownPlayerCharacter::BeginPlay()
@@ -69,16 +72,56 @@ void ATopDownPlayerCharacter::BeginPlay()
 		}
 	}
 
-	if (bEnableMovementDebug && GEngine)
+	// if (bEnableMovementDebug && GEngine)
+	// {
+	// 	const bool bHasController = (GetController() != nullptr);
+	// 	GEngine->AddOnScreenDebugMessage(
+	// 		1001,
+	// 		5.0f,
+	// 		bHasController ? FColor::Green : FColor::Red,
+	// 		FString::Printf(TEXT("TopDown BeginPlay - Possessed: %s"), bHasController ? TEXT("YES") : TEXT("NO"))
+	// 	);
+	// }
+
+	if (IsValid(HeartHealth))
 	{
-		const bool bHasController = (GetController() != nullptr);
-		GEngine->AddOnScreenDebugMessage(
-			1001,
-			5.0f,
-			bHasController ? FColor::Green : FColor::Red,
-			FString::Printf(TEXT("TopDown BeginPlay - Possessed: %s"), bHasController ? TEXT("YES") : TEXT("NO"))
-		);
+		HeartHealth->OnDeath.AddDynamic(this, &ATopDownPlayerCharacter::HandlePlayerDeath);
 	}
+
+	RestoreGameplayInput();
+}
+
+void ATopDownPlayerCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	RestoreGameplayInput();
+}
+
+void ATopDownPlayerCharacter::RestoreGameplayInput()
+{
+	bIsPlayerDead = false;
+
+	if (UCharacterMovementComponent* Movement = GetCharacterMovement())
+	{
+		if (Movement->MovementMode == MOVE_None)
+		{
+			Movement->SetMovementMode(MOVE_Walking);
+		}
+	}
+
+	APlayerController* PC = Cast<APlayerController>(GetController());
+	if (!IsValid(PC))
+	{
+		return;
+	}
+
+	EnableInput(PC);
+	PC->SetIgnoreMoveInput(false);
+	PC->SetIgnoreLookInput(false);
+
+	FInputModeGameOnly InputMode;
+	PC->SetInputMode(InputMode);
+	PC->bShowMouseCursor = false;
 }
 
 void ATopDownPlayerCharacter::Tick(float DeltaSeconds)
@@ -101,33 +144,33 @@ void ATopDownPlayerCharacter::Tick(float DeltaSeconds)
 		SetActorRotation(FRotator(0.0f, SnappedYaw, 0.0f));
 	}
 
-	if (!bEnableMovementDebug || !GEngine)
-	{
-		return;
-	}
-
-	DebugElapsedTime += DeltaSeconds;
-	if (DebugElapsedTime < 0.25f)
-	{
-		return;
-	}
-
-	DebugElapsedTime = 0.0f;
-
-	const FVector Velocity = GetVelocity();
-	const bool bHasController = (GetController() != nullptr);
-	GEngine->AddOnScreenDebugMessage(
-		1002,
-		0.3f,
-		FColor::Yellow,
-		FString::Printf(
-			TEXT("Input F: %.2f R: %.2f | Vel: %.1f | Possessed: %s"),
-			LastMoveForwardValue,
-			LastMoveRightValue,
-			Velocity.Size2D(),
-			bHasController ? TEXT("YES") : TEXT("NO")
-		)
-	);
+	// if (!bEnableMovementDebug || !GEngine)
+	// {
+	// 	return;
+	// }
+	//
+	// DebugElapsedTime += DeltaSeconds;
+	// if (DebugElapsedTime < 0.25f)
+	// {
+	// 	return;
+	// }
+	//
+	// DebugElapsedTime = 0.0f;
+	//
+	// const FVector Velocity = GetVelocity();
+	// const bool bHasController = (GetController() != nullptr);
+	// GEngine->AddOnScreenDebugMessage(
+	// 	1002,
+	// 	0.3f,
+	// 	FColor::Yellow,
+	// 	FString::Printf(
+	// 		TEXT("Input F: %.2f R: %.2f | Vel: %.1f | Possessed: %s"),
+	// 		LastMoveForwardValue,
+	// 		LastMoveRightValue,
+	// 		Velocity.Size2D(),
+	// 		bHasController ? TEXT("YES") : TEXT("NO")
+	// 	)
+	// );
 }
 
 void ATopDownPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -141,15 +184,20 @@ void ATopDownPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 	PlayerInputComponent->BindAction(TEXT("PlaceBomb"), IE_Pressed, this, &ATopDownPlayerCharacter::HandlePlaceBombPressed);
 	PlayerInputComponent->BindAction(TEXT("Roll"), IE_Pressed, this, &ATopDownPlayerCharacter::HandleRollPressed);
 
-	if (bEnableMovementDebug && GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(1003, 4.0f, FColor::Green, TEXT("TopDown Input Bindings: OK"));
-	}
+	// if (bEnableMovementDebug && GEngine)
+	// {
+	// 	GEngine->AddOnScreenDebugMessage(1003, 4.0f, FColor::Green, TEXT("TopDown Input Bindings: OK"));
+	// }
 }
 
 void ATopDownPlayerCharacter::MoveForward(float Value)
 {
 	LastMoveForwardValue = Value;
+
+	if (bIsPlayerDead)
+	{
+		return;
+	}
 
 	if (bIsRolling)
 	{
@@ -168,6 +216,11 @@ void ATopDownPlayerCharacter::MoveRight(float Value)
 {
 	LastMoveRightValue = Value;
 
+	if (bIsPlayerDead)
+	{
+		return;
+	}
+
 	if (bIsRolling)
 	{
 		return;
@@ -183,6 +236,11 @@ void ATopDownPlayerCharacter::MoveRight(float Value)
 
 void ATopDownPlayerCharacter::HandleInteractPressed()
 {
+	if (bIsPlayerDead)
+	{
+		return;
+	}
+
 	if (IsValid(PlayerInteraction))
 	{
 		PlayerInteraction->Interact();
@@ -201,6 +259,11 @@ int32 ATopDownPlayerCharacter::GetCurrentHearts() const
 
 void ATopDownPlayerCharacter::HandlePlaceBombPressed()
 {
+	if (bIsPlayerDead)
+	{
+		return;
+	}
+
 	if (IsValid(PlayerInteraction))
 	{
 		PlayerInteraction->PlaceBomb();
@@ -209,6 +272,11 @@ void ATopDownPlayerCharacter::HandlePlaceBombPressed()
 
 void ATopDownPlayerCharacter::HandleRollPressed()
 {
+	if (bIsPlayerDead)
+	{
+		return;
+	}
+
 	if (bIsRolling || bRollOnCooldown)
 	{
 		return;
@@ -283,4 +351,68 @@ void ATopDownPlayerCharacter::EndRoll()
 void ATopDownPlayerCharacter::EndRollCooldown()
 {
 	bRollOnCooldown = false;
+}
+
+void ATopDownPlayerCharacter::HandlePlayerDeath()
+{
+	if (bIsPlayerDead)
+	{
+		return;
+	}
+
+	bIsPlayerDead = true;
+
+	if (UCharacterMovementComponent* Movement = GetCharacterMovement())
+	{
+		Movement->DisableMovement();
+		Movement->StopMovementImmediately();
+	}
+
+	APlayerController* PC = Cast<APlayerController>(GetController());
+	if (IsValid(PC))
+	{
+		DisableInput(PC);
+	}
+	if (!IsValid(PC))
+	{
+		return;
+	}
+
+	FInputModeUIOnly InputMode;
+	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+	PC->SetInputMode(InputMode);
+	PC->bShowMouseCursor = true;
+
+	if (!*DeathMenuWidgetClass)
+	{
+		// UE_LOG(LogTemp, Warning, TEXT("Player died but DeathMenuWidgetClass is not set on %s."), *GetName());
+		return;
+	}
+
+	DeathMenuWidget = CreateWidget<UPlayerDeathMenuWidget>(PC, DeathMenuWidgetClass);
+	if (!IsValid(DeathMenuWidget))
+	{
+		return;
+	}
+
+	DeathMenuWidget->MainMenuLevelName = MainMenuLevelName;
+	DeathMenuWidget->RestartLevelName = RestartLevelName;
+	DeathMenuWidget->InitializeDeathMenu(PC);
+	DeathMenuWidget->AddToViewport(10000);
+}
+
+void ATopDownPlayerCharacter::GoToMainMenuFromDeath()
+{
+	if (IsValid(DeathMenuWidget))
+	{
+		DeathMenuWidget->GoToMainMenu();
+	}
+}
+
+void ATopDownPlayerCharacter::RestartLevelFromDeath()
+{
+	if (IsValid(DeathMenuWidget))
+	{
+		DeathMenuWidget->RestartLevel();
+	}
 }

@@ -70,7 +70,7 @@ void AStationaryAreaEnemy::ApplyAreaDamage()
 		{
 			if (!TargetHealth->IsDead() && !TargetHealth->IsDamageImmune())
 			{
-				TargetHealth->ApplyHeartDamage(HeartsToLose);
+				TargetHealth->ApplyHeartDamage(HeartsToLose, this, TEXT("PlantAura"));
 			}
 		}
 	}

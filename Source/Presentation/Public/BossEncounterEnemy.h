@@ -52,7 +52,7 @@ protected:
 	float NormalSpeed = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Boss|Charge")
-	float ChargeHitRange = 90.0f;
+	float ChargeHitRange = 160.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Boss|Combat")
 	float ChargeDamage = 1.0f;
