@@ -2,15 +2,35 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Blueprint/UserWidget.h"
+#include "BombInventoryComponent.h"
 #include "TopDownPlayerCharacter.generated.h"
+
 
 UCLASS(Blueprintable)
 class PRESENTATION_API ATopDownPlayerCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
+	// HUD reference
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<class UUserWidget> m_cPlayerHUD;
+
+
 public:
 	ATopDownPlayerCharacter();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "TopDown|Health")
+	float m_fHealth = 100.0f;
+
+	UFUNCTION(BlueprintPure, Category = "Health")
+	int32 GetCurrentHearts() const;
+
+	//Reference to BombInventoryComponent Bomb Count
+	UFUNCTION(BlueprintPure, Category = "Bomb")
+	int32 GetCurrentBombCount() const;
+
+	
 
 protected:
 	virtual void BeginPlay() override;
