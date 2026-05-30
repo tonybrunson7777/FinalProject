@@ -2,7 +2,8 @@
 
 #include "Components/SkeletalMeshComponent.h"
 #include "HeartHealthComponent.h"
-#include "Kismet/GameplayStatics.h"
+#include "Engine/EngineTypes.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "TimerManager.h"
 
 AStationaryAreaEnemy::AStationaryAreaEnemy()
@@ -37,15 +38,40 @@ void AStationaryAreaEnemy::BeginPlay()
 
 void AStationaryAreaEnemy::ApplyAreaDamage()
 {
-	UGameplayStatics::ApplyRadialDamage(
-		this,
-		DamageAmount,
+	UWorld* World = GetWorld();
+	if (!IsValid(World))
+	{
+		return;
+	}
+
+	TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
+	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_Pawn));
+
+	TArray<AActor*> ActorsToIgnore;
+	ActorsToIgnore.Add(this);
+
+	TArray<AActor*> OverlappedActors;
+	if (!UKismetSystemLibrary::SphereOverlapActors(
+		World,
 		GetActorLocation(),
 		DamageRadius,
-		nullptr,
-		TArray<AActor*>(),
-		this,
-		nullptr,
-		true
-	);
+		ObjectTypes,
+		AActor::StaticClass(),
+		ActorsToIgnore,
+		OverlappedActors))
+	{
+		return;
+	}
+
+	const int32 HeartsToLose = FMath::Max(1, FMath::CeilToInt(DamageAmount));
+	for (AActor* OverlappedActor : OverlappedActors)
+	{
+		if (UHeartHealthComponent* TargetHealth = OverlappedActor->FindComponentByClass<UHeartHealthComponent>())
+		{
+			if (!TargetHealth->IsDead() && !TargetHealth->IsDamageImmune())
+			{
+				TargetHealth->ApplyHeartDamage(HeartsToLose);
+			}
+		}
+	}
 }

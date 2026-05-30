@@ -49,6 +49,7 @@ protected:
 	void AcquireTarget();
 	void UpdateChaseAndAttackState(float DeltaSeconds);
 	bool IsTargetInViewAngle(const FVector& ToTarget) const;
+	bool CanSeeTarget(const FVector& ToTarget) const;
 	void FaceTarget(const FVector& ToTarget, float DeltaSeconds);
 	void StartAttacking();
 	void StopAttacking();

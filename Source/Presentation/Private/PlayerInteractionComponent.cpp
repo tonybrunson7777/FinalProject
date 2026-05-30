@@ -4,6 +4,8 @@
 #include "InteractableInterface.h"
 #include "GameFramework/Actor.h"
 #include "Engine/World.h"
+#include "Engine/EngineTypes.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 UPlayerInteractionComponent::UPlayerInteractionComponent()
 {
@@ -62,77 +64,69 @@ bool UPlayerInteractionComponent::FindInteractable(FHitResult& OutHit) const
 		return false;
 	}
 
-	const FVector Start = OwnerActor->GetActorLocation() + FVector(0.0f, 0.0f, 50.0f);
-	const FVector End = Start + OwnerActor->GetActorForwardVector() * InteractionDistance;
+	const FVector OwnerLocation = OwnerActor->GetActorLocation();
+	const FVector OwnerForward = OwnerActor->GetActorForwardVector().GetSafeNormal2D();
 
-	FCollisionQueryParams QueryParams(SCENE_QUERY_STAT(PlayerInteractTrace), false, OwnerActor);
-	const bool bHit = World->SweepSingleByChannel(
-		OutHit,
-		Start,
-		End,
-		FQuat::Identity,
-		ECC_Visibility,
-		FCollisionShape::MakeSphere(InteractionRadius),
-		QueryParams
+	TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
+	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_WorldStatic));
+	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_WorldDynamic));
+	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_Pawn));
+
+	TArray<AActor*> ActorsToIgnore;
+	ActorsToIgnore.Add(OwnerActor);
+
+	TArray<AActor*> NearbyActors;
+	const bool bFoundActors = UKismetSystemLibrary::SphereOverlapActors(
+		World,
+		OwnerLocation,
+		InteractionDistance,
+		ObjectTypes,
+		AActor::StaticClass(),
+		ActorsToIgnore,
+		NearbyActors
 	);
 
-	UE_LOG(
-		LogTemp,
-		Warning,
-		TEXT("Interact trace: hit=%s actor='%s' start=%s end=%s"),
-		bHit ? TEXT("TRUE") : TEXT("FALSE"),
-		*GetNameSafe(OutHit.GetActor()),
-		*Start.ToCompactString(),
-		*End.ToCompactString()
-	);
-
-	if (bHit && IsValid(OutHit.GetActor()) && OutHit.GetActor()->GetClass()->ImplementsInterface(UInteractableInterface::StaticClass()))
+	if (!bFoundActors)
 	{
-		return true;
+		UE_LOG(LogTemp, Warning, TEXT("Interact: no actors in radius %.1f."), InteractionDistance);
+		return false;
 	}
 
-	// Top-down fallback: sweep a larger sphere around the player and pick the nearest interactable.
-	TArray<FHitResult> FallbackHits;
-	FCollisionQueryParams FallbackParams(SCENE_QUERY_STAT(PlayerInteractFallbackSweep), false, OwnerActor);
-	const bool bFoundFallbackHits = World->SweepMultiByChannel(
-		FallbackHits,
-		Start,
-		Start,
-		FQuat::Identity,
-		ECC_Visibility,
-		FCollisionShape::MakeSphere(InteractionDistance),
-		FallbackParams
-	);
+	const float MaxDistanceSq = FMath::Square(InteractionDistance);
+	float BestScore = TNumericLimits<float>::Max();
+	AActor* BestInteractable = nullptr;
 
-	float ClosestDistanceSq = TNumericLimits<float>::Max();
-	AActor* ClosestInteractable = nullptr;
-
-	if (bFoundFallbackHits)
+	for (AActor* Candidate : NearbyActors)
 	{
-		for (const FHitResult& FallbackHit : FallbackHits)
+		if (!IsValid(Candidate) || !Candidate->GetClass()->ImplementsInterface(UInteractableInterface::StaticClass()))
 		{
-			AActor* Candidate = FallbackHit.GetActor();
-			if (!IsValid(Candidate) || !Candidate->GetClass()->ImplementsInterface(UInteractableInterface::StaticClass()))
-			{
-				continue;
-			}
+			continue;
+		}
 
-			const float DistSq = FVector::DistSquared(OwnerActor->GetActorLocation(), Candidate->GetActorLocation());
-			if (DistSq < ClosestDistanceSq)
-			{
-				ClosestDistanceSq = DistSq;
-				ClosestInteractable = Candidate;
-			}
+		const FVector ToCandidate = Candidate->GetActorLocation() - OwnerLocation;
+		const float DistanceSq = ToCandidate.SizeSquared2D();
+		if (DistanceSq > MaxDistanceSq)
+		{
+			continue;
+		}
+
+		const float ForwardAlignment = FVector::DotProduct(OwnerForward, ToCandidate.GetSafeNormal2D());
+		const float Score = DistanceSq - (ForwardAlignment * InteractionDistance * InteractionDistance);
+
+		if (Score < BestScore)
+		{
+			BestScore = Score;
+			BestInteractable = Candidate;
 		}
 	}
 
-	if (IsValid(ClosestInteractable))
+	if (!IsValid(BestInteractable))
 	{
-		OutHit = FHitResult(ClosestInteractable, nullptr, ClosestInteractable->GetActorLocation(), FVector::ZeroVector);
-		UE_LOG(LogTemp, Warning, TEXT("Interact overlap fallback: selected '%s'."), *GetNameSafe(ClosestInteractable));
-		return true;
+		UE_LOG(LogTemp, Warning, TEXT("Interact: no interactable in radius %.1f."), InteractionDistance);
+		return false;
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Interact overlap fallback: no interactable in radius %.1f."), InteractionDistance);
-	return false;
+	OutHit = FHitResult(BestInteractable, nullptr, BestInteractable->GetActorLocation(), FVector::ZeroVector);
+	UE_LOG(LogTemp, Warning, TEXT("Interact: selected '%s'."), *GetNameSafe(BestInteractable));
+	return true;
 }

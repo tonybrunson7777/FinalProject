@@ -14,7 +14,10 @@ ACrackedWall::ACrackedWall()
 
 	WallMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WallMesh"));
 	WallMesh->SetupAttachment(Root);
+	WallMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	WallMesh->SetCollisionObjectType(ECC_WorldDynamic);
 	WallMesh->SetCollisionProfileName(TEXT("BlockAll"));
+	WallMesh->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 
 	HeartHealth = CreateDefaultSubobject<UHeartHealthComponent>(TEXT("HeartHealth"));
 	HeartHealth->MaxHearts = 1;

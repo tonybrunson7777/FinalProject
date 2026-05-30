@@ -1,5 +1,6 @@
 #include "SimpleChasingEnemy.h"
 
+#include "EnemyLineOfSight.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "HeartHealthComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -59,7 +60,7 @@ void ASimpleChasingEnemy::UpdateChaseAndAttackState(float DeltaSeconds)
 	}
 
 	const FVector ToTarget = TargetActor->GetActorLocation() - GetActorLocation();
-	if (!IsTargetInViewAngle(ToTarget))
+	if (!CanSeeTarget(ToTarget))
 	{
 		StopAttacking();
 		return;
@@ -85,6 +86,13 @@ void ASimpleChasingEnemy::UpdateChaseAndAttackState(float DeltaSeconds)
 		}
 		StartAttacking();
 	}
+}
+
+bool ASimpleChasingEnemy::CanSeeTarget(const FVector& ToTarget) const
+{
+	return IsValid(TargetActor)
+		&& PresentationEnemyVisibility::HasLineOfSightTo(this, TargetActor)
+		&& IsTargetInViewAngle(ToTarget);
 }
 
 bool ASimpleChasingEnemy::IsTargetInViewAngle(const FVector& ToTarget) const
@@ -142,11 +150,15 @@ void ASimpleChasingEnemy::AttackTarget()
 
 	const float DistanceToTarget = FVector::Dist(GetActorLocation(), TargetActor->GetActorLocation());
 	const FVector ToTarget = TargetActor->GetActorLocation() - GetActorLocation();
-	if (DistanceToTarget > AttackRange || !IsTargetInViewAngle(ToTarget))
+	if (DistanceToTarget > AttackRange || !CanSeeTarget(ToTarget))
 	{
 		StopAttacking();
 		return;
 	}
 
-	UGameplayStatics::ApplyDamage(TargetActor, AttackDamage, GetController(), this, nullptr);
+	if (UHeartHealthComponent* TargetHealth = TargetActor->FindComponentByClass<UHeartHealthComponent>())
+	{
+		const int32 HeartsToLose = FMath::Max(1, FMath::CeilToInt(AttackDamage));
+		TargetHealth->ApplyHeartDamage(HeartsToLose);
+	}
 }

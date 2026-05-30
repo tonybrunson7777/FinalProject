@@ -1,6 +1,9 @@
 #include "BombInventoryComponent.h"
 
+#include "HeartHealthComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Engine/EngineTypes.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/Pawn.h"
 #include "Engine/World.h"
@@ -132,17 +135,8 @@ void UBombInventoryComponent::DetonateBomb(AActor* BombActor)
 		UGameplayStatics::PlaySoundAtLocation(this, ExplosionSound, ExplosionLocation);
 	}
 
-	UGameplayStatics::ApplyRadialDamage(
-		this,
-		ExplosionDamage,
-		ExplosionLocation,
-		ExplosionRadius,
-		nullptr,
-		TArray<AActor*>(),
-		BombActor,
-		EventInstigator,
-		true
-	);
+	// Heart-based damage (cracked walls, enemies, player). Radial damage does not reliably hit static destructibles.
+	DamageHeartActorsInExplosionRadius(ExplosionLocation, BombActor, EventInstigator);
 
 	UE_LOG(
 		LogTemp,
@@ -154,4 +148,60 @@ void UBombInventoryComponent::DetonateBomb(AActor* BombActor)
 	);
 
 	BombActor->Destroy();
+}
+
+void UBombInventoryComponent::DamageHeartActorsInExplosionRadius(const FVector& ExplosionLocation, AActor* DamageCauser, AController* Instigator)
+{
+	UWorld* World = GetWorld();
+	if (!IsValid(World))
+	{
+		return;
+	}
+
+	TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
+	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_WorldStatic));
+	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_WorldDynamic));
+	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_Pawn));
+
+	TArray<AActor*> ActorsToIgnore;
+	if (IsValid(DamageCauser))
+	{
+		ActorsToIgnore.Add(DamageCauser);
+	}
+
+	TArray<AActor*> OverlappedActors;
+	const bool bFoundActors = UKismetSystemLibrary::SphereOverlapActors(
+		World,
+		ExplosionLocation,
+		ExplosionRadius,
+		ObjectTypes,
+		AActor::StaticClass(),
+		ActorsToIgnore,
+		OverlappedActors
+	);
+
+	if (!bFoundActors)
+	{
+		return;
+	}
+
+	TSet<AActor*> DamagedActors;
+	const int32 HeartsToLose = FMath::Max(1, FMath::CeilToInt(ExplosionDamage));
+
+	for (AActor* OverlappedActor : OverlappedActors)
+	{
+		if (!IsValid(OverlappedActor) || DamagedActors.Contains(OverlappedActor))
+		{
+			continue;
+		}
+
+		UHeartHealthComponent* HeartHealth = OverlappedActor->FindComponentByClass<UHeartHealthComponent>();
+		if (!IsValid(HeartHealth) || HeartHealth->IsDead() || HeartHealth->IsDamageImmune())
+		{
+			continue;
+		}
+
+		HeartHealth->ApplyHeartDamage(HeartsToLose);
+		DamagedActors.Add(OverlappedActor);
+	}
 }

@@ -1,6 +1,8 @@
 #include "BossEncounterEnemy.h"
 
+#include "EnemyLineOfSight.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "HeartHealthComponent.h"
 #include "HeartHealthComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
@@ -118,7 +120,7 @@ void ABossEncounterEnemy::PerformJump()
 	);
 
 	FVector JumpDirection = RandomOffset.GetSafeNormal2D();
-	if (IsValid(TargetActor))
+	if (IsValid(TargetActor) && PresentationEnemyVisibility::HasLineOfSightTo(this, TargetActor))
 	{
 		const FVector TowardPlayer = (TargetActor->GetActorLocation() - GetActorLocation()).GetSafeNormal2D();
 		JumpDirection = (JumpDirection + TowardPlayer * 0.5f).GetSafeNormal2D();
@@ -130,8 +132,12 @@ void ABossEncounterEnemy::PerformJump()
 
 void ABossEncounterEnemy::UpdateChargePhase(float DeltaSeconds)
 {
-	if (!IsValid(TargetActor))
+	if (!IsValid(TargetActor) || !PresentationEnemyVisibility::HasLineOfSightTo(this, TargetActor))
 	{
+		if (UCharacterMovementComponent* Movement = GetCharacterMovement())
+		{
+			Movement->StopMovementImmediately();
+		}
 		return;
 	}
 
@@ -159,12 +165,18 @@ void ABossEncounterEnemy::FaceDirection(const FVector& Direction, float DeltaSec
 
 void ABossEncounterEnemy::TryApplyChargeDamage()
 {
-	if (!IsValid(TargetActor) || GetWorldTimerManager().IsTimerActive(ChargeDamageTimerHandle))
+	if (!IsValid(TargetActor)
+		|| !PresentationEnemyVisibility::HasLineOfSightTo(this, TargetActor)
+		|| GetWorldTimerManager().IsTimerActive(ChargeDamageTimerHandle))
 	{
 		return;
 	}
 
-	UGameplayStatics::ApplyDamage(TargetActor, ChargeDamage, GetController(), this, nullptr);
+	if (UHeartHealthComponent* TargetHealth = TargetActor->FindComponentByClass<UHeartHealthComponent>())
+	{
+		const int32 HeartsToLose = FMath::Max(1, FMath::CeilToInt(ChargeDamage));
+		TargetHealth->ApplyHeartDamage(HeartsToLose);
+	}
 
 	GetWorldTimerManager().SetTimer(
 		ChargeDamageTimerHandle,

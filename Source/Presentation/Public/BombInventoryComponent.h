@@ -48,4 +48,5 @@ public:
 protected:
 	void ScheduleBombDetonation(AActor* SpawnedBomb);
 	void DetonateBomb(AActor* BombActor);
+	void DamageHeartActorsInExplosionRadius(const FVector& ExplosionLocation, AActor* DamageCauser, AController* Instigator);
 };
