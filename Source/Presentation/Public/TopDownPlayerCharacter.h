@@ -20,8 +20,7 @@ class PRESENTATION_API ATopDownPlayerCharacter : public ACharacter
 public:
 	ATopDownPlayerCharacter();
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "TopDown|Health")
-	float m_fHealth = 100.0f;
+	
 
 	UFUNCTION(BlueprintPure, Category = "Health")
 	int32 GetCurrentHearts() const;
